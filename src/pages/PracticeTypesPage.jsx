@@ -53,6 +53,7 @@ const PracticeTypesPage = () => {
                 src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/2ec8be1b2260266c835a42b62abb5048.png"
                 alt="A diverse group of veterinary professionals collaborating"
                 className="max-w-full sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl"
+                loading="lazy"
                 animate={{
                   y: ["-10px", "10px", "-10px"],
                 }}

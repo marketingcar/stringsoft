@@ -1,45 +1,59 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from '@/components/ui/toaster';
 import Layout from '@/components/Layout';
 import ScrollToTop from '@/components/ScrollToTop';
-import HomePage from '@/pages/HomePage';
-import FeaturesPage from '@/pages/FeaturesPage';
-import PracticeTypesPage from '@/pages/PracticeTypesPage';
-import PricingPage from '@/pages/PricingPage';
-import SupportPage from '@/pages/SupportPage';
-import BlogPage from '@/pages/BlogPage';
-import BlogPostPage from '@/pages/BlogPostPage';
-import RequestDemoPage from '@/pages/RequestDemoPage';
-import ContactPage from '@/pages/ContactPage';
-import PrivacyPolicyPage from '@/pages/PrivacyPolicyPage';
-import TermsOfServicePage from '@/pages/TermsOfServicePage';
-import CookiePolicyPage from '@/pages/CookiePolicyPage';
-import FaqPage from '@/pages/FaqPage';
-import NotFoundPage from '@/pages/NotFoundPage';
+
+// Lazy load all pages for better performance
+const HomePage = lazy(() => import('@/pages/HomePage'));
+const FeaturesPage = lazy(() => import('@/pages/FeaturesPage'));
+const PracticeTypesPage = lazy(() => import('@/pages/PracticeTypesPage'));
+const PricingPage = lazy(() => import('@/pages/PricingPage'));
+const SupportPage = lazy(() => import('@/pages/SupportPage'));
+const BlogPage = lazy(() => import('@/pages/BlogPage'));
+const BlogPostPage = lazy(() => import('@/pages/BlogPostPage'));
+const RequestDemoPage = lazy(() => import('@/pages/RequestDemoPage'));
+const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const PrivacyPolicyPage = lazy(() => import('@/pages/PrivacyPolicyPage'));
+const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
+const CookiePolicyPage = lazy(() => import('@/pages/CookiePolicyPage'));
+const FaqPage = lazy(() => import('@/pages/FaqPage'));
+const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
+
+// Loading component
+const LoadingSpinner = () => (
+  <div className="min-h-screen bg-gradient-to-br from-dark-purple via-charcoal-black to-deep-purple flex items-center justify-center">
+    <div className="text-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-teal mx-auto mb-4"></div>
+      <p className="text-white/70 font-medium">Loading...</p>
+    </div>
+  </div>
+);
 
 function App() {
   return (
     <>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="features" element={<FeaturesPage />} />
-          <Route path="practice-types" element={<PracticeTypesPage />} />
-          <Route path="pricing" element={<PricingPage />} />
-          <Route path="support" element={<SupportPage />} />
-          <Route path="blog" element={<BlogPage />} />
-          <Route path="blog/:slug" element={<BlogPostPage />} />
-          <Route path="request-demo" element={<RequestDemoPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
-          <Route path="terms-of-service" element={<TermsOfServicePage />} />
-          <Route path="cookie-policy" element={<CookiePolicyPage />} />
-          <Route path="faq" element={<FaqPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="features" element={<FeaturesPage />} />
+            <Route path="practice-types" element={<PracticeTypesPage />} />
+            <Route path="pricing" element={<PricingPage />} />
+            <Route path="support" element={<SupportPage />} />
+            <Route path="blog" element={<BlogPage />} />
+            <Route path="blog/:slug" element={<BlogPostPage />} />
+            <Route path="request-demo" element={<RequestDemoPage />} />
+            <Route path="contact" element={<ContactPage />} />
+            <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="terms-of-service" element={<TermsOfServicePage />} />
+            <Route path="cookie-policy" element={<CookiePolicyPage />} />
+            <Route path="faq" element={<FaqPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Suspense>
       <Toaster />
     </>
   );

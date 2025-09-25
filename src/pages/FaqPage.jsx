@@ -85,6 +85,7 @@ const FaqPage = () => {
                 src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/963e789cc78f2d74902cd99058205331.png"
                 alt="An illustration of a cat looking at a question mark"
                 className="w-full max-w-sm sm:max-w-md md:max-w-lg"
+                loading="lazy"
                 animate={{
                   y: ["-10px", "10px", "-10px"],
                 }}

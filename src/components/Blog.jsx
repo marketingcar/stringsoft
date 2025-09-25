@@ -2,9 +2,10 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
+import { getBlogPosts } from '@/utils/blogLoader';
 
 const Blog = () => {
+  const blogPosts = getBlogPosts();
   const featuredPosts = blogPosts.slice(0, 3);
 
   return (
@@ -36,10 +37,10 @@ const Blog = () => {
             >
               <Link to={`/blog/${post.slug}`} className="block feature-card glass-effect rounded-2xl overflow-hidden group h-full flex flex-col">
                 <div className="relative h-48 overflow-hidden">
-                  <img 
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
-                    alt={post.title}
-                   src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+                  <img
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    alt={post.imageDescription || post.title}
+                    src={post.image || "https://images.unsplash.com/photo-1595872018818-97555653a011"} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                   <div className="absolute bottom-4 left-4">
                     <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-xs font-bold">{post.category}</span>

@@ -37,6 +37,7 @@ const RequestDemoPage = () => {
                 src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/1ad29746c729274102dd988d69407e42.png"
                 alt="An illustration of a person scheduling a demo on a calendar"
                 className="max-w-md md:max-w-lg"
+                loading="lazy"
                 animate={{
                   y: ["-10px", "10px", "-10px"],
                 }}

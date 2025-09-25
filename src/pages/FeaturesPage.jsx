@@ -143,7 +143,7 @@ const FeaturesPage = () => {
             duration: 0.8,
             delay: 0.2
           }} className="relative flex justify-center">
-              <motion.img src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/08e99da47d0c66abd65670e4d0be4783.png" alt="Feature illustration showing software interface elements" className="max-w-sm md:max-w-md lg:max-w-lg" animate={{
+              <motion.img src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/08e99da47d0c66abd65670e4d0be4783.png" alt="Feature illustration showing software interface elements" className="max-w-sm md:max-w-md lg:max-w-lg" loading="lazy" animate={{
               y: ["-10px", "10px", "-10px"]
             }} transition={{
               duration: 5,

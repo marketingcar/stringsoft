@@ -2,12 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { blogPosts } from '@/data/blogPosts';
+import { getBlogPost } from '@/utils/blogLoader';
 import { ArrowLeft, Calendar } from 'lucide-react';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = getBlogPost(slug);
 
   if (!post) {
     return <Navigate to="/404" replace />;
@@ -55,10 +55,10 @@ const BlogPostPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative h-96 rounded-2xl overflow-hidden mb-12"
             >
-              <img 
-                className="w-full h-full object-cover" 
-                alt={post.title}
-               src="https://images.unsplash.com/photo-1595872018818-97555653a011" />
+              <img
+                className="w-full h-full object-cover"
+                alt={post.imageDescription || post.title}
+                src={post.image || "https://images.unsplash.com/photo-1595872018818-97555653a011"} />
               <div className="absolute inset-0 bg-black/30"></div>
             </motion.div>
 
@@ -68,7 +68,7 @@ const BlogPostPage = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="prose prose-invert prose-lg max-w-none mx-auto"
             >
-              {post.content.map((paragraph, index) => (
+              {post.content.split('\n\n').map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </motion.div>

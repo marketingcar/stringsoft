@@ -209,7 +209,7 @@ const PricingPage = () => {
                   ease: "easeInOut",
                 }}
               >
-                <img alt="An illustration of hands interacting with a software interface, representing flexible plans" className="max-w-sm md:max-w-md lg:max-w-lg" src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/2ac5e792d5d8352a30bc5b9eb497bf41.png" />
+                <img alt="An illustration of hands interacting with a software interface, representing flexible plans" className="max-w-sm md:max-w-md lg:max-w-lg" loading="lazy" src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/2ac5e792d5d8352a30bc5b9eb497bf41.png" />
               </motion.div>
             </motion.div>
           </div>

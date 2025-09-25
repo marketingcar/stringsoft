@@ -11,6 +11,7 @@ const AnimatedIcon = ({ className, animate, transition }) => (
       src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/82f166637955ff5e7e366a47be32ee65.png"
       alt="Subtle background icon"
       className="w-full h-full"
+      loading="lazy"
     />
   </motion.div>
 );

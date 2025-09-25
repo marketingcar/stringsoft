@@ -71,10 +71,11 @@ const AtAGlance = () => {
             }}
             className="flex justify-center"
           >
-            <img 
-              src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/ce79e3f72f11b3eaddc37b5bbec8e42c.png" 
-              alt="Detective cat illustration" 
+            <img
+              src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/ce79e3f72f11b3eaddc37b5bbec8e42c.png"
+              alt="Detective cat illustration"
               className="w-full max-w-[300px] md:max-w-[400px]"
+              loading="lazy"
             />
           </motion.div>
         </div>

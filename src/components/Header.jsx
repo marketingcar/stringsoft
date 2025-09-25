@@ -46,10 +46,11 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <img 
-                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/f03b4b7a74b3cff324d7e971cbf16b62.png" 
-                alt="StringSoft Logo" 
+              <img
+                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/f03b4b7a74b3cff324d7e971cbf16b62.png"
+                alt="StringSoft Logo"
                 className="h-10 w-auto"
+                loading="eager"
               />
             </motion.div>
           </Link>

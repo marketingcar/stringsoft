@@ -3,9 +3,11 @@ import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Calendar } from 'lucide-react';
-import { blogPosts } from '@/data/blogPosts';
+import { getBlogPosts } from '@/utils/blogLoader';
 
 const BlogPage = () => {
+  const blogPosts = getBlogPosts();
+
   return (
     <>
       <Helmet>
@@ -38,6 +40,7 @@ const BlogPage = () => {
                 src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/a96d177ca9489f25f30dc4bfc418cbe1.png"
                 alt="An illustration of a person reading a blog on a giant phone"
                 className="max-w-sm md:max-w-md"
+                loading="lazy"
                 animate={{
                   y: ["-10px", "10px", "-10px"],
                 }}
@@ -61,7 +64,11 @@ const BlogPage = () => {
               >
                 <Link to={`/blog/${post.slug}`} className="block feature-card glass-effect rounded-2xl overflow-hidden group h-full flex flex-col">
                   <div className="relative h-56 overflow-hidden">
-                    <img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" alt={post.title} src="https://images.unsplash.com/photo-1608394547454-cbc0d9510e9e" />
+                    <img
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      alt={post.imageDescription || post.title}
+                      loading="lazy"
+                      src={post.image || "https://images.unsplash.com/photo-1608394547454-cbc0d9510e9e"} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
                       <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-xs font-bold">{post.category}</span>
