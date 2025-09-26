@@ -139,3 +139,39 @@ h1, h2, h3, h4, h5, h6 {
     min-width: 250px;
   }
 }
+
+@layer components {
+  .styleguide { @apply max-w-6xl mx-auto px-6 py-10; }
+  .styleguide h1 { @apply text-3xl font-bold tracking-tight mb-6; }
+  .styleguide h2 { @apply text-2xl font-semibold tracking-tight mt-10 mb-4; }
+  .styleguide h3 { @apply text-lg font-semibold mt-8 mb-3; }
+  .styleguide p  { @apply leading-7 mb-4; } /* remove text-base */
+
+  /* Cards & layout tuned for your dark theme */
+  .sg-card { @apply rounded-2xl p-6 ring-1 ring-white/10; background: rgba(255,255,255,0.05); }
+  .sg-grid-2 { @apply grid grid-cols-1 md:grid-cols-2 gap-6; }
+  .sg-grid-3 { @apply grid grid-cols-1 md:grid-cols-3 gap-6; }
+  .sg-grid-4 { @apply grid grid-cols-1 md:grid-cols-4 gap-6; }
+
+  .sg-swatch { @apply rounded-xl ring-1 ring-white/10 p-4 flex items-end justify-between; height: 88px; }
+  .sg-token { @apply text-[10px] font-mono text-white/80; }
+
+  .sg-btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold whitespace-nowrap; }
+  .sg-btn-primary {
+    background-image: linear-gradient(to right, var(--brand-teal), var(--deep-purple), var(--light-orange));
+    background-size: 200% auto;
+    transition: background-position .5s ease;
+    color: var(--pure-white);
+    box-shadow: 0 0 20px rgba(25,164,175,.25);
+  }
+  .sg-btn-primary:hover { background-position: right center; }
+  .sg-btn-ghost { @apply ring-1 ring-white/15; background: transparent; color: var(--pure-white); }
+  .sg-input {
+    @apply w-full rounded-xl px-3 py-2 text-sm focus:outline-none;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--pure-white);
+  }
+  .sg-input:focus { box-shadow: 0 0 0 3px rgba(25,164,175,.35); border-color: transparent; }
+  .sg-badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset; }
+}

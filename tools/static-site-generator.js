@@ -32,6 +32,7 @@ const ROUTES = [
   { path: '/terms-of-service', title: 'Terms of Service - StringSoft', description: 'Terms and conditions for using StringSoft veterinary practice management software.' },
   { path: '/cookie-policy', title: 'Cookie Policy - StringSoft', description: 'Information about how StringSoft uses cookies and tracking technologies.' },
   { path: '/faq', title: 'FAQ - StringSoft Help Center', description: 'Frequently asked questions about StringSoft veterinary practice management software.' },
+  { path: '/styleguide', title: 'Style Guide - StringSoft Design System', description: 'Complete style guide and design system for StringSoft.' },
 ];
 
 // Load blog posts
@@ -136,14 +137,16 @@ function generateSitemap(routes, posts) {
   const now = new Date().toISOString();
   const urls = [];
 
-  // Add main routes
+  // Add main routes (exclude styleguide)
   routes.forEach(route => {
-    urls.push(`  <url>
+    if (route.path !== '/styleguide') {
+      urls.push(`  <url>
     <loc>${SITE_CONFIG.url}${route.path === '/' ? '' : route.path}</loc>
     <lastmod>${now}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${route.path === '/' ? '1.0' : '0.8'}</priority>
   </url>`);
+    }
   });
 
   // Add blog posts
@@ -167,7 +170,9 @@ function generateSitemapTxt(routes, posts) {
   const urls = [];
 
   routes.forEach(route => {
-    urls.push(`${SITE_CONFIG.url}${route.path === '/' ? '' : route.path}`);
+    if (route.path !== '/styleguide') {
+      urls.push(`${SITE_CONFIG.url}${route.path === '/' ? '' : route.path}`);
+    }
   });
 
   posts.forEach(post => {
