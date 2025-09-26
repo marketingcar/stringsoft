@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link, NavLink } from 'react-router-dom';
 import { Menu, X, Phone, Home, HelpCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import OptimizedImage from '@/components/OptimizedImage';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -46,11 +47,13 @@ const Header = () => {
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
-              <img
-                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/f03b4b7a74b3cff324d7e971cbf16b62.png"
-                alt="StringSoft Logo"
+              <OptimizedImage
+                src="/images/logo-header.png"
+                alt="StringSoft - Revolutionary Veterinary Practice Management Software Logo"
                 className="h-10 w-auto"
                 loading="eager"
+                width={775}
+                height={178}
               />
             </motion.div>
           </Link>

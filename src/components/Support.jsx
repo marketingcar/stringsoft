@@ -42,7 +42,7 @@ const Support = () => {
               className="flex justify-center lg:justify-start mb-8"
             >
               <motion.img
-                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/86dc253daf62f65f9e97c5bf9d46e01a.png"
+                src="/images/support-illustration.png"
                 alt="Support illustration"
                 className="max-w-xs md:max-w-sm"
                 animate={{

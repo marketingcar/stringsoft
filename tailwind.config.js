@@ -17,8 +17,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Aileron', 'sans-serif'],
-        heading: ['Gotham', 'sans-serif'],
+        sans: ['Signika', 'sans-serif'],
+        heading: ['Metrophobic', 'sans-serif'],
       },
       colors: {
         'dark-purple': '#2E186A',

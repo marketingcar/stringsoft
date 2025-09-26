@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import SEOHead from '@/components/SEOHead';
 import Hero from '@/components/Hero';
 import Intro from '@/components/Intro';
 import AtAGlance from '@/components/AtAGlance';
@@ -12,23 +12,36 @@ const HomePage = () => {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "StringSoft",
-    "url": "https://your-domain.com/",
-    "logo": "https://your-domain.com/logo.png",
+    "url": "https://stringsoft.com/",
+    "logo": "https://stringsoft.com/logo.png",
+    "description": "Revolutionary veterinary practice management software designed for modern animal care professionals.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+1-800-481-2693",
-      "contactType": "customer service"
+      "contactType": "customer service",
+      "areaServed": "US",
+      "availableLanguage": "English"
     },
-    "sameAs": []
+    "sameAs": [
+      "https://www.linkedin.com/company/stringsoft-inc./",
+      "https://www.facebook.com/stringsoftnh"
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "United States",
+      "addressCountry": "US"
+    }
   };
 
   return (
     <>
-      <Helmet>
-        <title>StringSoft | Veterinary Practice Management, Simplified</title>
-        <meta name="description" content="The all-in-one veterinary practice management software. Unified EMR, scheduling, imaging, labs, billing, and client communication in one seamless platform." />
-        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
-      </Helmet>
+      <SEOHead
+        title="StringSoft | Veterinary Practice Management, Simplified"
+        description="The all-in-one veterinary practice management software. Unified EMR, scheduling, imaging, labs, billing, and client communication in one seamless platform."
+        canonical="https://stringsoft.com/"
+        type="website"
+        structuredData={organizationSchema}
+      />
       <Hero />
       <Intro />
       <AtAGlance />

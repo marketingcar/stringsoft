@@ -34,7 +34,7 @@ const RequestDemoPage = () => {
               className="flex justify-center mb-8"
             >
               <motion.img
-                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/1ad29746c729274102dd988d69407e42.png"
+                src="/images/request-demo-calendar.png"
                 alt="An illustration of a person scheduling a demo on a calendar"
                 className="max-w-md md:max-w-lg"
                 loading="lazy"

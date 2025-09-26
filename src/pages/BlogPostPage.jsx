@@ -3,7 +3,38 @@ import { Helmet } from 'react-helmet';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getBlogPost } from '@/utils/blogLoader';
-import { ArrowLeft, Calendar } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+
+// Simple markdown-to-HTML converter for blog content
+const formatMarkdownContent = (content) => {
+  return content
+    // Convert headers
+    .replace(/^### (.*$)/gim, '<h3>$1</h3>')
+    .replace(/^## (.*$)/gim, '<h2>$1</h2>')
+    .replace(/^# (.*$)/gim, '<h1>$1</h1>')
+    // Convert bold text
+    .replace(/\*\*(.*?)\*\*/gim, '<strong>$1</strong>')
+    // Convert italic text
+    .replace(/\*(.*?)\*/gim, '<em>$1</em>')
+    // Convert bullet points
+    .replace(/^- (.*$)/gim, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gims, '<ul>$1</ul>')
+    // Convert images
+    .replace(/!\[(.*?)\]\((.*?)\)/gim, '<img src="$2" alt="$1" class="w-full h-auto rounded-lg mb-4" />')
+    // Convert links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/gim, '<a href="$2" class="text-brand-teal hover:underline">$1</a>')
+    // Convert line breaks to paragraphs
+    .split('\n\n')
+    .map(paragraph => paragraph.trim())
+    .filter(paragraph => paragraph.length > 0)
+    .map(paragraph => {
+      if (paragraph.startsWith('<h') || paragraph.startsWith('<ul') || paragraph.startsWith('<img')) {
+        return paragraph;
+      }
+      return `<p>${paragraph}</p>`;
+    })
+    .join('\n');
+};
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -41,11 +72,8 @@ const BlogPostPage = () => {
             >
               <span className="bg-brand-teal text-white px-4 py-2 rounded-full text-sm font-bold mb-4 inline-block">{post.category}</span>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-shadow">{post.title}</h1>
-              <div className="flex items-center space-x-6 text-white/70 mb-8">
-                <div className="flex items-center">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  <span>{post.date}</span>
-                </div>
+              <div className="mb-8">
+                {/* Date removed for cleaner design */}
               </div>
             </motion.div>
 
@@ -68,9 +96,7 @@ const BlogPostPage = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="prose prose-invert prose-lg max-w-none mx-auto"
             >
-              {post.content.split('\n\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <div dangerouslySetInnerHTML={{ __html: formatMarkdownContent(post.content) }} />
             </motion.div>
           </article>
         </div>

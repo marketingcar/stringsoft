@@ -7,13 +7,14 @@ const SEOHead = ({
   canonical,
   image,
   type = 'website',
-  author = 'StringSoft',
+  author = 'Marketing Car',
   publishedTime,
   modifiedTime,
   section,
   tags = [],
   structuredData,
   noIndex = false,
+  breadcrumbs = [],
 }) => {
   const siteConfig = {
     name: 'StringSoft',
@@ -58,29 +59,155 @@ const SEOHead = ({
     };
   };
 
-  // Generate organization structured data
-  const generateOrganizationStructuredData = () => ({
+  // Generate comprehensive structured data
+  const generateBusinessStructuredData = () => ({
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["SoftwareApplication", "Organization"],
     "name": siteConfig.name,
+    "legalName": "StringSoft Inc",
     "url": siteConfig.url,
-    "logo": `${siteConfig.url}/logo.png`,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteConfig.url}/images/logo-header.png`,
+      "contentUrl": `${siteConfig.url}/images/logo-header.png`,
+      "width": 775,
+      "height": 178
+    },
+    "image": {
+      "@type": "ImageObject",
+      "url": siteConfig.defaultImage,
+      "contentUrl": siteConfig.defaultImage,
+      "width": 1200,
+      "height": 630
+    },
     "description": "Revolutionary veterinary practice management software designed for modern animal care professionals.",
-    "sameAs": [
-      "https://twitter.com/StringSoftware",
-      "https://linkedin.com/company/stringsoft"
-    ],
-    "contactPoint": {
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web Browser, Windows, macOS, Linux",
+    "softwareVersion": "2024",
+    "releaseNotes": "Latest version with enhanced features for veterinary practices",
+    "downloadUrl": siteConfig.url,
+    "screenshot": siteConfig.defaultImage,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "150"
+    },
+    "offers": {
+      "@type": "Offer",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock",
+      "priceRange": "Contact for pricing",
+      "seller": {
+        "@type": "Organization",
+        "name": "StringSoft Inc"
+      }
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StringSoft Inc",
+      "url": siteConfig.url
+    },
+    "contactPoint": [{
       "@type": "ContactPoint",
-      "telephone": "+1-555-STRING",
+      "telephone": "+1-800-481-2693",
       "contactType": "customer service",
-      "availableLanguage": "en"
+      "areaServed": "US",
+      "availableLanguage": ["English"],
+      "hoursAvailable": "Mo-Fr 08:00-17:00"
+    }, {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "areaServed": "US",
+      "availableLanguage": ["English"],
+      "url": `${siteConfig.url}/contact`
+    }],
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "US",
+      "addressRegion": "New Hampshire"
+    },
+    "foundingDate": "2015",
+    "industry": "Veterinary Software",
+    "keywords": "veterinary practice management, EMR, electronic medical records, veterinary software, animal care, practice management",
+    "targetAudience": {
+      "@type": "Audience",
+      "name": "Veterinary Professionals",
+      "description": "Veterinarians, veterinary technicians, practice managers, and veterinary staff"
+    },
+    "serviceArea": {
+      "@type": "GeoShape",
+      "addressCountry": "US"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/company/stringsoft-inc./",
+      "https://www.facebook.com/stringsoftnh"
+    ],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": siteConfig.url
+    }
+  });
+
+  // Generate website structured data
+  const generateWebsiteStructuredData = () => ({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": siteConfig.name,
+    "alternateName": "StringSoft Veterinary Software",
+    "url": siteConfig.url,
+    "description": "Revolutionary veterinary practice management software designed for modern animal care professionals.",
+    "inLanguage": "en-US",
+    "copyrightYear": "2024",
+    "copyrightHolder": {
+      "@type": "Organization",
+      "name": "StringSoft Inc"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Marketing Car"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StringSoft Inc",
+      "url": siteConfig.url
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": `${siteConfig.url}/blog?search={search_term_string}`
+      },
+      "query-input": "required name=search_term_string"
+    },
+    "mainEntity": {
+      "@type": "SoftwareApplication",
+      "name": siteConfig.name,
+      "description": "Revolutionary veterinary practice management software designed for modern animal care professionals."
     }
   });
 
   const articleData = generateArticleStructuredData();
-  const organizationData = generateOrganizationStructuredData();
+  const businessData = generateBusinessStructuredData();
+  const websiteData = generateWebsiteStructuredData();
   const customStructuredData = structuredData;
+
+  // Generate breadcrumb structured data
+  const generateBreadcrumbStructuredData = () => {
+    if (!breadcrumbs.length) return null;
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumbs.map((breadcrumb, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": breadcrumb.name,
+        "item": `${siteConfig.url}${breadcrumb.url}`
+      }))
+    };
+  };
+
+  const breadcrumbData = generateBreadcrumbStructuredData();
 
   return (
     <Helmet>
@@ -130,10 +257,22 @@ const SEOHead = ({
         </script>
       )}
 
-      {/* Always include organization data */}
+      {/* Always include business data */}
       <script type="application/ld+json">
-        {JSON.stringify(organizationData)}
+        {JSON.stringify(businessData)}
       </script>
+
+      {/* Always include website data */}
+      <script type="application/ld+json">
+        {JSON.stringify(websiteData)}
+      </script>
+
+      {/* Include breadcrumb data if provided */}
+      {breadcrumbData && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbData)}
+        </script>
+      )}
 
       {customStructuredData && (
         <script type="application/ld+json">

@@ -8,7 +8,7 @@ const AnimatedIcon = ({ className, animate, transition }) => (
     transition={transition}
   >
     <img
-      src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/82f166637955ff5e7e366a47be32ee65.png"
+      src="/images/decorative-background-icons.png"
       alt="Subtle background icon"
       className="w-full h-full"
       loading="lazy"

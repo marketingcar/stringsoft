@@ -7,6 +7,7 @@ import ScrollToTop from '@/components/ScrollToTop';
 // Lazy load all pages for better performance
 const HomePage = lazy(() => import('@/pages/HomePage'));
 const FeaturesPage = lazy(() => import('@/pages/FeaturesPage'));
+const FullFeatureSetPage = lazy(() => import('@/pages/FullFeatureSetPage'));
 const PracticeTypesPage = lazy(() => import('@/pages/PracticeTypesPage'));
 const PricingPage = lazy(() => import('@/pages/PricingPage'));
 const SupportPage = lazy(() => import('@/pages/SupportPage'));
@@ -20,9 +21,9 @@ const CookiePolicyPage = lazy(() => import('@/pages/CookiePolicyPage'));
 const FaqPage = lazy(() => import('@/pages/FaqPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
-// Loading component
+// Loading component with consistent background
 const LoadingSpinner = () => (
-  <div className="min-h-screen bg-gradient-to-br from-dark-purple via-charcoal-black to-deep-purple flex items-center justify-center">
+  <div className="min-h-screen bg-charcoal-black flex items-center justify-center">
     <div className="text-center">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-brand-teal mx-auto mb-4"></div>
       <p className="text-white/70 font-medium">Loading...</p>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="features" element={<FeaturesPage />} />
+            <Route path="features/complete" element={<FullFeatureSetPage />} />
             <Route path="practice-types" element={<PracticeTypesPage />} />
             <Route path="pricing" element={<PricingPage />} />
             <Route path="support" element={<SupportPage />} />

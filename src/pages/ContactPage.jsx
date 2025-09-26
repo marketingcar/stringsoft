@@ -32,7 +32,7 @@ const ContactPage = () => {
           duration: 0.8
         }} className="text-center mb-16">
             <motion.div className="flex justify-center mb-8">
-              <motion.img src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/a6266b50d1986f3d35fcc6eeeb4cc5d6.png" alt="An illustration of a cat with a contact envelope" className="max-w-md md:max-w-lg lg:max-w-xl" loading="lazy" animate={{
+              <motion.img src="/images/contact-cat-envelope.png" alt="An illustration of a cat with a contact envelope" className="max-w-md md:max-w-lg lg:max-w-xl" loading="lazy" animate={{
               y: ["-10px", "10px", "-10px"]
             }} transition={{
               duration: 5,
@@ -98,7 +98,7 @@ const ContactPage = () => {
               duration: 0.8,
               delay: 0.6
             }}>
-                <img alt="A cat popping out of a mailbox" className="max-w-xs" loading="lazy" src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/solid-0-74QR0.png" />
+                <img alt="A cat popping out of a mailbox" className="max-w-xs" loading="lazy" src="/images/contact-cat-mailbox.png" />
               </motion.div>
             </motion.div>
 

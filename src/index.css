@@ -1,15 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Aileron:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Signika:wght@300;400;500;600;700&family=Metrophobic&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: 'Gotham';
-  src: url('https://fonts.cdnfonts.com/css/gotham') format('woff2');
-  font-weight: 300 900;
-  font-display: swap;
-}
 
 :root {
   --dark-purple: #2E186A;
@@ -32,7 +26,7 @@ html {
 }
 
 body {
-  font-family: 'Aileron', sans-serif;
+  font-family: 'Signika', sans-serif;
   background-color: var(--charcoal-black);
   color: var(--pure-white);
   overflow-x: hidden;
@@ -59,8 +53,8 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Gotham', 'Aileron', sans-serif;
-  font-weight: 700;
+  font-family: 'Metrophobic', 'Signika', sans-serif;
+  font-weight: 400;
 }
 
 .gradient-text {

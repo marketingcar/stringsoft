@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Calendar } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getBlogPosts } from '@/utils/blogLoader';
 
 const BlogPage = () => {
-  const blogPosts = getBlogPosts();
+  const allBlogPosts = getBlogPosts();
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 9;
+  const totalPages = Math.ceil(allBlogPosts.length / postsPerPage);
+
+  const startIndex = (currentPage - 1) * postsPerPage;
+  const endIndex = startIndex + postsPerPage;
+  const blogPosts = allBlogPosts.slice(startIndex, endIndex);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <>
@@ -37,7 +49,7 @@ const BlogPage = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <motion.img
-                src="https://horizons-cdn.hostinger.com/3739547e-79b0-4f3a-9b18-ca49e4c85466/a96d177ca9489f25f30dc4bfc418cbe1.png"
+                src="/images/blog-reading-illustration.png"
                 alt="An illustration of a person reading a blog on a giant phone"
                 className="max-w-sm md:max-w-md"
                 loading="lazy"
@@ -53,7 +65,7 @@ const BlogPage = () => {
             </motion.div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10 mb-12">
             {blogPosts.map((post, index) => (
               <motion.div
                 key={post.slug}
@@ -77,11 +89,7 @@ const BlogPage = () => {
                   <div className="p-6 flex flex-col flex-grow">
                     <h2 className="text-2xl font-bold text-white mb-3 flex-grow">{post.title}</h2>
                     <p className="text-white/70 mb-4">{post.excerpt}</p>
-                    <div className="flex items-center justify-between text-white/60 mt-auto">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-2" />
-                        <span className="text-sm">{post.date}</span>
-                      </div>
+                    <div className="flex items-center justify-end text-white/60 mt-auto">
                       <div className="flex items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <span className="text-sm mr-2">Read More</span>
                         <ArrowRight className="w-4 h-4" />
@@ -91,6 +99,60 @@ const BlogPage = () => {
                 </Link>
               </motion.div>
             ))}
+          </div>
+
+          {/* Pagination */}
+          {totalPages > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="flex justify-center items-center space-x-2"
+            >
+              <button
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-lg ${
+                  currentPage === 1
+                    ? 'text-white/30 cursor-not-allowed'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                } transition-colors`}
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <button
+                  key={page}
+                  onClick={() => handlePageChange(page)}
+                  className={`px-4 py-2 rounded-lg transition-colors ${
+                    currentPage === page
+                      ? 'bg-brand-teal text-white'
+                      : 'text-white/70 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+
+              <button
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-lg ${
+                  currentPage === totalPages
+                    ? 'text-white/30 cursor-not-allowed'
+                    : 'text-white/70 hover:text-white hover:bg-white/10'
+                } transition-colors`}
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </motion.div>
+          )}
+
+          {/* Blog stats */}
+          <div className="text-center mt-8 text-white/60">
+            <p>Showing {startIndex + 1}-{Math.min(endIndex, allBlogPosts.length)} of {allBlogPosts.length} articles</p>
           </div>
         </div>
       </div>

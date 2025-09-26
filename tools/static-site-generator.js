@@ -1,10 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom/server';
 import matter from 'gray-matter';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -16,7 +12,7 @@ const SITE_CONFIG = {
   name: 'StringSoft',
   url: 'https://stringsoft.com',
   description: 'Revolutionary veterinary practice management software designed for modern animal care professionals.',
-  author: 'StringSoft',
+  author: 'Marketing Car',
   language: 'en',
   image: 'https://stringsoft.com/og-image.jpg',
 };
@@ -25,6 +21,7 @@ const SITE_CONFIG = {
 const ROUTES = [
   { path: '/', title: 'StringSoft - Revolutionary Veterinary Practice Management Software', description: 'Transform your veterinary practice with StringSoft\'s comprehensive practice management software. Streamline operations, improve efficiency, and deliver exceptional care.' },
   { path: '/features', title: 'Features - StringSoft Veterinary Practice Management', description: 'Discover StringSoft\'s powerful features including EMR, scheduling, digital imaging, lab interfaces, and more.' },
+  { path: '/features/complete', title: 'Complete Feature Set - StringSoft Veterinary Software', description: 'Explore StringSoft\'s comprehensive suite of veterinary practice management features and capabilities.' },
   { path: '/practice-types', title: 'Practice Types - StringSoft Solutions', description: 'StringSoft serves general practice, specialty, corporate, and university veterinary facilities with tailored solutions.' },
   { path: '/pricing', title: 'Pricing - StringSoft Veterinary Software', description: 'Transparent pricing for StringSoft veterinary practice management software. Contact us for a custom quote.' },
   { path: '/support', title: 'Support - StringSoft Customer Service', description: '24/7 support for StringSoft users. Get help with your veterinary practice management software.' },
@@ -84,20 +81,36 @@ function generateHTML(path, title, description, content, canonical, structuredDa
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="${canonical}">
 
+  <!-- DNS Prefetch for external domains -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+
+  <!-- Preconnect to critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Favicon and Icons -->
+  <link rel="icon" type="image/png" href="https://www.stringsoft.com/favicon.png">
+  <link rel="shortcut icon" href="https://www.stringsoft.com/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.stringsoft.com/favicon.png">
+  <meta name="theme-color" content="#189AA6">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="${fullUrl}">
   <meta property="og:title" content="${title}">
   <meta property="og:description" content="${description}">
   <meta property="og:image" content="${ogImage}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta property="og:site_name" content="${SITE_CONFIG.name}">
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="${fullUrl}">
-  <meta property="twitter:title" content="${title}">
-  <meta property="twitter:description" content="${description}">
-  <meta property="twitter:image" content="${ogImage}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="${fullUrl}">
+  <meta name="twitter:title" content="${title}">
+  <meta name="twitter:description" content="${description}">
+  <meta name="twitter:image" content="${ogImage}">
 
   <!-- Additional Meta Tags -->
   <meta name="author" content="${SITE_CONFIG.author}">
@@ -105,21 +118,13 @@ function generateHTML(path, title, description, content, canonical, structuredDa
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <link rel="alternate" type="application/rss+xml" title="StringSoft RSS Feed" href="/rss.xml">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-
-  <!-- Preconnect to external domains -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://www.stringsoft.com">
-
   ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData, null, 2)}</script>` : ''}
 
   <!-- CSS will be injected here by build process -->
   <link rel="stylesheet" href="/assets/index.css">
 </head>
 <body>
-  <div id="root">${content}</div>
+  ${content}
   <!-- JS will be injected here by build process -->
   <script type="module" src="/assets/index.js"></script>
 </body>
@@ -251,6 +256,63 @@ function generateRedirects() {
   return htaccess;
 }
 
+// Generate individual HTML files for each route
+function generateHTMLFiles(routes, posts, distDir) {
+  console.log('📄 Generating individual HTML files...');
+
+  // Generate main route HTML files
+  routes.forEach(route => {
+    const routeDir = path.join(distDir, route.path === '/' ? '' : route.path);
+    if (!fs.existsSync(routeDir)) {
+      fs.mkdirSync(routeDir, { recursive: true });
+    }
+
+    const htmlContent = generateHTML(
+      route.path,
+      route.title,
+      route.description,
+      `<div id="root"></div>`, // React will hydrate this
+      `${SITE_CONFIG.url}${route.path === '/' ? '' : route.path}`,
+      null
+    );
+
+    const filePath = path.join(routeDir, 'index.html');
+    fs.writeFileSync(filePath, htmlContent);
+  });
+
+  // Generate blog post HTML files
+  posts.forEach(post => {
+    const blogDir = path.join(distDir, 'blog', post.slug);
+    if (!fs.existsSync(blogDir)) {
+      fs.mkdirSync(blogDir, { recursive: true });
+    }
+
+    const postTitle = `${post.title} - StringSoft Blog`;
+    const htmlContent = generateHTML(
+      `/blog/${post.slug}`,
+      postTitle,
+      post.excerpt || post.content.substring(0, 160),
+      `<div id="root"></div>`,
+      `${SITE_CONFIG.url}/blog/${post.slug}`,
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": post.title,
+        "description": post.excerpt,
+        "author": {
+          "@type": "Organization",
+          "name": SITE_CONFIG.name
+        },
+        "datePublished": post.date,
+        "dateModified": post.lastModified
+      }
+    );
+
+    const filePath = path.join(blogDir, 'index.html');
+    fs.writeFileSync(filePath, htmlContent);
+  });
+}
+
 // Main generation function
 async function generateStaticSite() {
   console.log('🚀 Starting static site generation...');
@@ -263,15 +325,30 @@ async function generateStaticSite() {
     fs.mkdirSync(distDir, { recursive: true });
   }
 
+  // Generate individual HTML files for each route
+  generateHTMLFiles(ROUTES, posts, distDir);
+
   // Generate sitemaps and RSS feed
   console.log('📄 Generating sitemaps and RSS feed...');
-  fs.writeFileSync(path.join(distDir, 'sitemap.xml'), generateSitemap(ROUTES, posts));
-  fs.writeFileSync(path.join(distDir, 'sitemap.txt'), generateSitemapTxt(ROUTES, posts));
-  fs.writeFileSync(path.join(distDir, 'rss.xml'), generateRSSFeed(posts));
+  const publicDir = path.join(rootDir, 'public');
+
+  // Write to both dist and public directories
+  const sitemapXml = generateSitemap(ROUTES, posts);
+  const sitemapTxt = generateSitemapTxt(ROUTES, posts);
+  const rssFeed = generateRSSFeed(posts);
+  const redirects = generateRedirects();
+
+  fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml);
+  fs.writeFileSync(path.join(distDir, 'sitemap.txt'), sitemapTxt);
+  fs.writeFileSync(path.join(distDir, 'rss.xml'), rssFeed);
+  fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml);
+  fs.writeFileSync(path.join(publicDir, 'sitemap.txt'), sitemapTxt);
+  fs.writeFileSync(path.join(publicDir, 'rss.xml'), rssFeed);
 
   // Generate redirects
   console.log('🔀 Generating redirects...');
-  fs.writeFileSync(path.join(distDir, '.htaccess'), generateRedirects());
+  fs.writeFileSync(path.join(distDir, '.htaccess'), redirects);
+  fs.writeFileSync(path.join(publicDir, '.htaccess'), redirects);
 
   // Generate robots.txt
   const robotsTxt = `User-agent: *
@@ -281,6 +358,7 @@ Sitemap: ${SITE_CONFIG.url}/sitemap.xml
 Sitemap: ${SITE_CONFIG.url}/rss.xml`;
 
   fs.writeFileSync(path.join(distDir, 'robots.txt'), robotsTxt);
+  fs.writeFileSync(path.join(publicDir, 'robots.txt'), robotsTxt);
 
   console.log(`✅ Generated ${ROUTES.length} routes and ${posts.length} blog posts`);
   console.log('📊 Files generated:');

@@ -13,6 +13,11 @@ A modern, optimized React-based website for StringSoft's veterinary practice man
 - **Radix UI** - Headless UI components for accessibility
 - **Lucide React** - Modern icon library
 
+### Typography
+- **Signika** - Primary font for body text and general content from Google Fonts
+- **Metrophobic** - Heading font for titles and headings from Google Fonts
+- **Font Optimization** - Preloaded Google Fonts with fallbacks for optimal performance
+
 ### Content Management
 - **Decap CMS** - Git-based headless CMS for content management
 - **Gray Matter** - Front matter parser for markdown files
@@ -108,9 +113,51 @@ npm run build
 ```
 
 The build process automatically:
-1. Generates static site assets (sitemap.xml, sitemap.txt, rss.xml, robots.txt, .htaccess)
-2. Builds the React application with Vite
-3. Optimizes all assets for production
+1. **Pre-Build**: Generates static site assets and individual HTML files
+   - Creates separate `index.html` for each route (37 total pages)
+   - Generates sitemap.xml, sitemap.txt, rss.xml, robots.txt, .htaccess
+   - Each HTML file has proper meta tags, structured data, and SEO optimization
+2. **Build**: Compiles the React application with Vite
+3. **Post-Build**: Optimizes all assets for production and ensures all files are copied to dist/
+
+### Static HTML Architecture
+Each route gets its own HTML file with optimized meta tags:
+```
+dist/
+├── index.html                    # Home page
+├── features/index.html           # Features page
+├── features/complete/index.html  # Complete features page
+├── pricing/index.html            # Pricing page
+├── blog/index.html              # Blog listing
+├── blog/[slug]/index.html       # Individual blog posts (23 files)
+└── [other-routes]/index.html    # Other pages
+```
+
+This provides:
+- **Better SEO**: Search engines can crawl individual pages
+- **Faster Loading**: No client-side routing for initial page load
+- **Social Sharing**: Each page has proper Open Graph tags
+- **Progressive Enhancement**: Works without JavaScript
+
+### Production Launch Checklist
+Before launching to production, ensure:
+
+1. **Domain Configuration**: All URLs in `tools/static-site-generator.js` point to `stringsoft.com`
+2. **SSL Certificate**: Ensure HTTPS is properly configured
+3. **DNS Records**: Point domain to your hosting server
+4. **Server Configuration**:
+   - Upload the `.htaccess` file for proper redirects
+   - Ensure all static files (sitemap.xml, robots.txt, rss.xml) are accessible
+   - Configure server to serve the React SPA properly
+5. **Search Engine Setup**:
+   - Submit `https://stringsoft.com/sitemap.xml` to Google Search Console
+   - Submit `https://stringsoft.com/sitemap.xml` to Bing Webmaster Tools
+   - Verify robots.txt is accessible at `https://stringsoft.com/robots.txt`
+6. **Content Verification**:
+   - Test all 36+ URLs for proper loading
+   - Verify blog pagination works correctly
+   - Test 404 page functionality
+   - Confirm all redirects work properly
 
 ### Automated Deployment
 GitHub Actions automatically deploys the site when changes are pushed to the main branch:
@@ -150,6 +197,38 @@ Your blog post content goes here...
 1. **Via Decap CMS** (Recommended): Visit `/admin` and use the visual editor
 2. **Manual**: Create new `.md` files in `src/content/blog/` following the format above
 
+## 🖼️ Image Optimization
+
+### Optimized Image Component
+The site uses a custom `OptimizedImage` component that automatically serves WebP images with PNG fallbacks:
+
+```jsx
+import OptimizedImage from '@/components/OptimizedImage';
+
+<OptimizedImage
+  src="/images/logo-header.png"
+  alt="StringSoft - Veterinary Practice Management Software Logo"
+  className="h-10 w-auto"
+  loading="eager"
+  width={775}
+  height={178}
+/>
+```
+
+### Image Assets
+All images are stored in `public/images/` with descriptive names:
+- `logo-header.png` & `logo-header.webp` - Main header logo
+- `logo-footer-white.png` & `logo-footer-white.webp` - Footer logo
+- `contact-cat-envelope.png` & `contact-cat-envelope.webp` - Contact page illustration
+- `blog-reading-illustration.png` & `blog-reading-illustration.webp` - Blog page illustration
+- And more contextually named images...
+
+### Adding New Images
+1. Add both PNG and WebP versions to `public/images/`
+2. Use descriptive names (e.g., `feature-name-illustration.png`)
+3. Update components to use `OptimizedImage` component
+4. Include proper alt text and dimensions
+
 ## 🔍 SEO Features
 
 ### Automated SEO
@@ -178,28 +257,38 @@ const SITE_CONFIG = {
 ## 🔧 Key Features
 
 ### Static Site Generation
-- Pre-generates HTML files for optimal performance
-- Automated sitemap and RSS feed generation
+- **Individual HTML files** for each route and blog post (37 total pages)
+- Pre-generated HTML for optimal SEO and performance
+- Automated sitemap.xml and RSS feed generation
 - 301 redirects for URL migrations
-- Comprehensive SEO optimization
+- Comprehensive structured data markup
+
+### Image Optimization
+- **WebP format with PNG fallbacks** for 50-70% smaller file sizes
+- Contextually named images (e.g., `logo-header.png`, `contact-cat-envelope.png`)
+- Optimized `<picture>` elements with format selection
+- Proper alt text and dimensions for accessibility
 
 ### Content Management System
 - Git-based workflow with Decap CMS
 - Markdown-based content with front matter
 - Visual editing interface
 - Preview functionality
+- 23 blog posts with pagination (9 per page)
 
 ### Performance Optimization
-- Vite-powered fast builds
-- Lazy loading and code splitting
-- Optimized assets and images
-- Static file generation
+- Vite-powered fast builds with code splitting
+- Lazy loading for images and components
+- WebP image optimization with fallbacks
+- Static file generation for sub-second load times
+- DNS prefetching and resource preconnection
 
 ### SEO & Analytics
-- Complete Open Graph implementation
-- Twitter Card optimization
-- Structured data markup
-- Automated sitemap generation
+- **Separate HTML pages** for better search indexing
+- Complete Open Graph and Twitter Card implementation
+- JSON-LD structured data for articles and business info
+- Automated sitemap generation (XML and TXT)
+- Comprehensive meta tags and canonical URLs
 
 ## 🤝 Contributing
 
