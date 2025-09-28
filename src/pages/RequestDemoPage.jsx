@@ -22,11 +22,9 @@ const RequestDemoPage = () => {
       });
 
       if (response.ok) {
-        toast({
-          title: "✅ Demo Request Sent!",
-          description: "Thanks for your interest! We'll be in touch shortly to schedule your demo.",
-        });
-        e.target.reset();
+        // Redirect to thank you page
+        window.location.href = '/thank-you';
+        return;
       } else {
         throw new Error('Failed to send demo request');
       }

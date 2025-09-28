@@ -28,6 +28,7 @@ const ROUTES = [
   { path: '/blog', title: 'Blog - StringSoft Veterinary Insights', description: 'Expert insights, tips, and best practices for veterinary practice management and animal care.' },
   { path: '/request-demo', title: 'Request Demo - Try StringSoft Free', description: 'Schedule a free demo of StringSoft veterinary practice management software. See how we can transform your practice.' },
   { path: '/contact', title: 'Contact Us - StringSoft', description: 'Get in touch with StringSoft for sales, support, or general inquiries about our veterinary software.' },
+  { path: '/thank-you', title: 'Thank You - StringSoft', description: 'Thank you for contacting StringSoft. We\'ll be in touch soon!' },
   { path: '/privacy-policy', title: 'Privacy Policy - StringSoft', description: 'StringSoft\'s privacy policy and data protection practices.' },
   { path: '/terms-of-service', title: 'Terms of Service - StringSoft', description: 'Terms and conditions for using StringSoft veterinary practice management software.' },
   { path: '/cookie-policy', title: 'Cookie Policy - StringSoft', description: 'Information about how StringSoft uses cookies and tracking technologies.' },

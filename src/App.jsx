@@ -15,6 +15,7 @@ const BlogPage = lazy(() => import('@/pages/BlogPage'));
 const BlogPostPage = lazy(() => import('@/pages/BlogPostPage'));
 const RequestDemoPage = lazy(() => import('@/pages/RequestDemoPage'));
 const ContactPage = lazy(() => import('@/pages/ContactPage'));
+const ThankYouPage = lazy(() => import('@/pages/ThankYouPage'));
 const PrivacyPolicyPage = lazy(() => import('@/pages/PrivacyPolicyPage'));
 const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
 const CookiePolicyPage = lazy(() => import('@/pages/CookiePolicyPage'));
@@ -49,6 +50,7 @@ function App() {
             <Route path="blog/:slug" element={<BlogPostPage />} />
             <Route path="request-demo" element={<RequestDemoPage />} />
             <Route path="contact" element={<ContactPage />} />
+            <Route path="thank-you" element={<ThankYouPage />} />
             <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
             <Route path="terms-of-service" element={<TermsOfServicePage />} />
             <Route path="cookie-policy" element={<CookiePolicyPage />} />

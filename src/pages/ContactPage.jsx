@@ -22,11 +22,9 @@ const ContactPage = () => {
       });
 
       if (response.ok) {
-        toast({
-          title: "✅ Message Sent!",
-          description: "Thanks for reaching out! We'll get back to you as soon as possible."
-        });
-        e.target.reset();
+        // Redirect to thank you page
+        window.location.href = '/thank-you';
+        return;
       } else {
         throw new Error('Failed to send message');
       }
