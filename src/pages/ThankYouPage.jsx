@@ -141,8 +141,8 @@ const ThankYouPage = () => {
             transition={{ delay: 1.4, duration: 0.8 }}
           >
             <motion.img
-              src="/images/thank-you-cat.png"
-              alt="A happy cat saying thank you"
+              src="/images/thankyou.png"
+              alt="Stringsoft saying thank you"
               className="max-w-xs opacity-80"
               loading="lazy"
               animate={{
