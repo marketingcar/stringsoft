@@ -67,10 +67,39 @@ function loadBlogPosts() {
   return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
+// Extract asset references from Vite's built HTML
+function extractAssetReferences(distDir) {
+  const indexPath = path.join(distDir, 'index.html');
+  const html = fs.readFileSync(indexPath, 'utf-8');
+
+  // Extract CSS and JS references
+  const cssMatch = html.match(/<link rel="stylesheet" href="([^"]+)"/);
+  const jsMatch = html.match(/<script type="module" crossorigin src="([^"]+)"/);
+  const modulePreloads = [];
+
+  // Extract modulepreload links
+  const modulePreloadRegex = /<link rel="modulepreload" crossorigin href="([^"]+)"/g;
+  let match;
+  while ((match = modulePreloadRegex.exec(html)) !== null) {
+    modulePreloads.push(match[1]);
+  }
+
+  return {
+    css: cssMatch ? cssMatch[1] : '/assets/index.css',
+    js: jsMatch ? jsMatch[1] : '/assets/index.js',
+    modulePreloads
+  };
+}
+
 // Generate HTML template
-function generateHTML(path, title, description, content, canonical, structuredData = null) {
+function generateHTML(path, title, description, content, canonical, structuredData = null, assetRefs = null) {
   const ogImage = SITE_CONFIG.image;
   const fullUrl = `${SITE_CONFIG.url}${path === '/' ? '' : path}`;
+
+  // Use extracted asset references or fallback to defaults
+  const cssHref = assetRefs?.css || '/assets/index.css';
+  const jsHref = assetRefs?.js || '/assets/index.js';
+  const modulePreloads = assetRefs?.modulePreloads || [];
 
   return `<!DOCTYPE html>
 <html lang="${SITE_CONFIG.language}">
@@ -121,13 +150,15 @@ function generateHTML(path, title, description, content, canonical, structuredDa
 
   ${structuredData ? `<script type="application/ld+json">${JSON.stringify(structuredData, null, 2)}</script>` : ''}
 
-  <!-- CSS will be injected here by build process -->
-  <link rel="stylesheet" href="/assets/index.css">
+  <!-- Module Preloads -->
+  ${modulePreloads.map(href => `<link rel="modulepreload" crossorigin href="${href}">`).join('\n  ')}
+
+  <!-- CSS and JS assets -->
+  <link rel="stylesheet" href="${cssHref}">
 </head>
 <body>
   ${content}
-  <!-- JS will be injected here by build process -->
-  <script type="module" src="/assets/index.js"></script>
+  <script type="module" crossorigin src="${jsHref}"></script>
 </body>
 </html>`;
 }
@@ -268,7 +299,7 @@ function generateRedirects() {
 }
 
 // Generate individual HTML files for each route
-function generateHTMLFiles(routes, posts, distDir) {
+function generateHTMLFiles(routes, posts, distDir, assetRefs) {
   console.log('📄 Generating individual HTML files...');
 
   // Generate main route HTML files (overwrite Vite's generic ones)
@@ -284,7 +315,8 @@ function generateHTMLFiles(routes, posts, distDir) {
       route.description,
       `<div id="root"></div>`, // React will hydrate this
       `${SITE_CONFIG.url}${route.path === '/' ? '' : route.path}`,
-      null
+      null,
+      assetRefs
     );
 
     const filePath = path.join(routeDir, 'index.html');
@@ -316,7 +348,8 @@ function generateHTMLFiles(routes, posts, distDir) {
         },
         "datePublished": post.date,
         "dateModified": post.lastModified
-      }
+      },
+      assetRefs
     );
 
     const filePath = path.join(blogDir, 'index.html');
@@ -336,8 +369,12 @@ async function generateStaticSite() {
     throw new Error('dist directory not found. Run vite build first.');
   }
 
+  // Extract asset references from Vite's built HTML
+  const assetRefs = extractAssetReferences(distDir);
+  console.log(`📦 Found assets: CSS=${assetRefs.css}, JS=${assetRefs.js}, Preloads=${assetRefs.modulePreloads.length}`);
+
   // Generate individual HTML files for each route
-  generateHTMLFiles(ROUTES, posts, distDir);
+  generateHTMLFiles(ROUTES, posts, distDir, assetRefs);
 
   // Generate sitemaps and RSS feed
   console.log('📄 Generating sitemaps and RSS feed...');
