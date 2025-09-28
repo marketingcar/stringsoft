@@ -23,3 +23,8 @@ RewriteRule ^products-pricing/?$ /pricing [R=301,L]
 RewriteRule ^free-demo/?$ /request-demo [R=301,L]
 RewriteRule ^news-events/?$ /blog [R=301,L]
 RewriteRule ^privacy-policy-2/?$ /privacy-policy [R=301,L]
+
+# Handle React Router - must be last
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]

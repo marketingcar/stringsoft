@@ -258,6 +258,12 @@ function generateRedirects() {
     htaccess += `RewriteRule ^${fromPath}/?$ ${toPath} [R=301,L]\n`;
   });
 
+  // Add React Router fallback (must be last)
+  htaccess += `\n# Handle React Router - must be last\n`;
+  htaccess += `RewriteCond %{REQUEST_FILENAME} !-f\n`;
+  htaccess += `RewriteCond %{REQUEST_FILENAME} !-d\n`;
+  htaccess += `RewriteRule . /index.html [L]\n`;
+
   return htaccess;
 }
 
