@@ -8,12 +8,35 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 const ContactPage = () => {
-  const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: "✅ Message Sent!",
-      description: "Thanks for reaching out! We'll get back to you as soon as possible."
-    });
+
+    try {
+      const formData = new FormData(e.target);
+      const response = await fetch('https://formspree.io/f/xpwypzjq', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        toast({
+          title: "✅ Message Sent!",
+          description: "Thanks for reaching out! We'll get back to you as soon as possible."
+        });
+        e.target.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "❌ Error",
+        description: "Failed to send message. Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
   };
   return <>
       <Helmet>
@@ -115,19 +138,19 @@ const ContactPage = () => {
               <form onSubmit={handleSubmit} className="feature-card glass-effect rounded-2xl p-8 space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="contact-name">Full Name</Label>
-                  <Input id="contact-name" placeholder="Your Name" required />
+                  <Input id="contact-name" name="name" placeholder="Your Name" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-company">Company Name</Label>
-                  <Input id="contact-company" placeholder="Your Company" />
+                  <Input id="contact-company" name="company" placeholder="Your Company" />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-email">Email Address</Label>
-                  <Input id="contact-email" type="email" placeholder="your@email.com" required />
+                  <Input id="contact-email" name="email" type="email" placeholder="your@email.com" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="contact-message">Message</Label>
-                  <Textarea id="contact-message" placeholder="How can we help you?" required />
+                  <Textarea id="contact-message" name="message" placeholder="How can we help you?" required />
                 </div>
                 <Button type="submit" variant="gradient" size="lg" className="w-full px-8 py-3 rounded-full text-lg">
                   Send Message

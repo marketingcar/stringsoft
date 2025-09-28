@@ -271,7 +271,7 @@ function generateRedirects() {
 function generateHTMLFiles(routes, posts, distDir) {
   console.log('📄 Generating individual HTML files...');
 
-  // Generate main route HTML files
+  // Generate main route HTML files (overwrite Vite's generic ones)
   routes.forEach(route => {
     const routeDir = path.join(distDir, route.path === '/' ? '' : route.path);
     if (!fs.existsSync(routeDir)) {
@@ -331,9 +331,9 @@ async function generateStaticSite() {
   const posts = loadBlogPosts();
   const distDir = path.join(rootDir, 'dist');
 
-  // Ensure dist directory exists
+  // Dist directory should already exist from Vite build
   if (!fs.existsSync(distDir)) {
-    fs.mkdirSync(distDir, { recursive: true });
+    throw new Error('dist directory not found. Run vite build first.');
   }
 
   // Generate individual HTML files for each route
@@ -349,16 +349,16 @@ async function generateStaticSite() {
   const rssFeed = generateRSSFeed(posts);
   const redirects = generateRedirects();
 
+  // Write to dist (these will be deployed)
   fs.writeFileSync(path.join(distDir, 'sitemap.xml'), sitemapXml);
   fs.writeFileSync(path.join(distDir, 'sitemap.txt'), sitemapTxt);
   fs.writeFileSync(path.join(distDir, 'rss.xml'), rssFeed);
+  fs.writeFileSync(path.join(distDir, '.htaccess'), redirects);
+
+  // Also write to public for development
   fs.writeFileSync(path.join(publicDir, 'sitemap.xml'), sitemapXml);
   fs.writeFileSync(path.join(publicDir, 'sitemap.txt'), sitemapTxt);
   fs.writeFileSync(path.join(publicDir, 'rss.xml'), rssFeed);
-
-  // Generate redirects
-  console.log('🔀 Generating redirects...');
-  fs.writeFileSync(path.join(distDir, '.htaccess'), redirects);
   fs.writeFileSync(path.join(publicDir, '.htaccess'), redirects);
 
   // Generate robots.txt

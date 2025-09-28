@@ -8,12 +8,35 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 
 const RequestDemoPage = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    toast({
-      title: "✅ Demo Request Sent!",
-      description: "Thanks for your interest! We'll be in touch shortly to schedule your demo.",
-    });
+
+    try {
+      const formData = new FormData(e.target);
+      const response = await fetch('https://formspree.io/f/xgvnaelv', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        toast({
+          title: "✅ Demo Request Sent!",
+          description: "Thanks for your interest! We'll be in touch shortly to schedule your demo.",
+        });
+        e.target.reset();
+      } else {
+        throw new Error('Failed to send demo request');
+      }
+    } catch (error) {
+      toast({
+        title: "❌ Error",
+        description: "Failed to send demo request. Please try again or contact us directly.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -66,26 +89,26 @@ const RequestDemoPage = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="name">Full Name</Label>
-                  <Input id="name" placeholder="Dr. Jane Doe" required />
+                  <Input id="name" name="name" placeholder="Dr. Jane Doe" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email Address</Label>
-                  <Input id="email" type="email" placeholder="jane.doe@vetclinic.com" required />
+                  <Input id="email" name="email" type="email" placeholder="jane.doe@vetclinic.com" required />
                 </div>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="clinicName">Clinic Name</Label>
-                  <Input id="clinicName" placeholder="Happy Paws Veterinary" required />
+                  <Input id="clinicName" name="clinicName" placeholder="Happy Paws Veterinary" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number</Label>
-                  <Input id="phone" type="tel" placeholder="(555) 123-4567" />
+                  <Input id="phone" name="phone" type="tel" placeholder="(555) 123-4567" />
                 </div>
               </div>
               <div className="space-y-2">
                 <Label htmlFor="message">What are you looking for in a PIMS?</Label>
-                <Textarea id="message" placeholder="Tell us about your practice and what features are most important to you..." />
+                <Textarea id="message" name="message" placeholder="Tell us about your practice and what features are most important to you..." />
               </div>
               <Button 
                 type="submit"
