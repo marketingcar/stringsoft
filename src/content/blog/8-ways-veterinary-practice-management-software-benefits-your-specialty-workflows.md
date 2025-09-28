@@ -4,7 +4,7 @@ slug: "8-ways-veterinary-practice-management-software-benefits-your-specialty-wo
 excerpt: "Veterinary specialists need an intuitive, hassle-free interface that provides user-friendly workflows so they can organize and perform tasks quickly, and help their specialty practice run smoothly …"
 category: "Technology"
 date: "2022-08-10"
-image: "https://www.stringsoft.com/blog/Customer-support-is-readily-available.jpg"
+image: "/blog/Customer-support-is-readily-available.jpg"
 imageDescription: "8 Ways Veterinary Practice Management Software Benefits Your Specialty Workflows"
 ---
 Veterinary specialists need an intuitive, hassle-free interface that provides user-friendly workflows so they can organize and perform tasks quickly, and help their specialty practice run smoothly and efficiently. We designed StringSoft veterinary practice management software with the specific efficiency issues of specialty practices in mind. Here are eight ways user-friendly software can benefit your specialty workflows.
@@ -63,7 +63,7 @@ Your veterinary PMS can handle many managerial issues and repetitive tasks, allo
 
 #### 8. Customer Support Is Readily Available
 
-![a person touching a button with a smiley face drawn on it](https://www.stringsoft.com/blog/Customer-support-is-readily-available.jpg)
+![a person touching a button with a smiley face drawn on it](/blog/Customer-support-is-readily-available.jpg)
 
 Monthly system updates ensure that your **StringSoft** PMS always provides the most advanced technology, and they are often based on requests for new features that clients consider valuable to improve practice workflows.
 

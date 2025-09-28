@@ -4,7 +4,7 @@ slug: "5-ways-your-veterinary-practice-management-software-can-improve-efficienc
 excerpt: "As staffing shortages plague the veterinary industry, your team has no time to waste on inefficient workflows. Ensure your veterinary practice team's focus remains on clients and their pets by rely…"
 category: "Technology"
 date: "2022-11-28"
-image: "https://www.stringsoft.com/blog/Veterinary-client-portal.jpg"
+image: "/blog/Veterinary-client-portal.jpg"
 imageDescription: "5 Ways Your Veterinary Practice Management Software Can Improve Efficiency"
 ---
 As staffing shortages plague the veterinary industry, your team has no time to waste on inefficient workflows. Ensure your veterinary practice team's focus remains on clients and their pets by relying on well-designed practice management software that can automate many time-eating—but necessary—tasks. To learn how you and your team can complete each workday's necessary—but mundane—administrative tasks, read our **StringSoft** software team's practice management software guide, and boost your veterinary practice's efficiency.
@@ -37,6 +37,6 @@ Your time is best spent caring for patients and communicating with clients. So, 
 
 #### 5. Automate Veterinary Data Backup and Software Updates
 
-![A person typing on a laptop keyboard](https://www.stringsoft.com/blog/Automate-veterinary-data-backup-and-software-updates.jpg)
+![A person typing on a laptop keyboard](/blog/Automate-veterinary-data-backup-and-software-updates.jpg)
 
 If your team's end-of-day tasks include backing up data and waiting around for a software update, you are wasting their time and your money. Current practice management software automates these critical tasks—with no effort on your team's part and no veterinary practice downtime. Current veterinary practice management software automates many mundane administrative processes, enabling your team to perform tasks only they are trained to complete. By upgrading your software, you give your team the opportunity to focus on the work they value—patient and client care. Schedule a demo to learn how **StringSoft** software can improve your veterinary practice's efficiency, boosting productivity and—by association—revenue.

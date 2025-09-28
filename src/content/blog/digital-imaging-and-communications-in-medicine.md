@@ -4,7 +4,7 @@ slug: "digital-imaging-and-communications-in-medicine"
 excerpt: "Digital Imaging and Communications in Medicine (DICOM) is the international standard for medical images and related information, defining the formats for medical images so they have the data and qu…"
 category: "Technology"
 date: "2022-09-26"
-image: "https://www.stringsoft.com/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg"
+image: "/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg"
 imageDescription: "Digital Imaging and Communications in Medicine"
 ---
 Digital Imaging and Communications in Medicine (DICOM) is the international standard for medical images and related information, defining the formats for medical images so they have the data and quality necessary to be exchanged in a clinical setting. DICOM has become indispensable in the veterinary industry, and the system offers numerous advantages. Keep reading to learn about this complex system and how your practice can benefit.
@@ -35,7 +35,7 @@ DICOM is the standard communications protocol for capturing, storing, and transf
 - **Print** — The DICOM print service is used to send images to a DICOM printer and ensures consistency among various display devices, including hard copy printouts.
 
 ### DICOM benefits for veterinarians
-![a dog getting a medical check up from a vet](https://www.stringsoft.com/blog/DICOM-benefits-for-veterinarians.jpg)
+![a dog getting a medical check up from a vet](/blog/DICOM-benefits-for-veterinarians.jpg)
 
 Medical imaging modalities are an essential tool to properly diagnose patients without using more invasive techniques, and DICOM has become ubiquitous wherever medical imaging is used. Benefits for veterinarians include:
 

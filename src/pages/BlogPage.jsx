@@ -80,7 +80,7 @@ const BlogPage = () => {
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                       alt={post.imageDescription || post.title}
                       loading="lazy"
-                      src={post.image || "https://images.unsplash.com/photo-1608394547454-cbc0d9510e9e"} />
+                      src={post.image || "/images/blog-reading-illustration.png"} />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
                     <div className="absolute bottom-4 left-4">
                       <span className="bg-brand-teal text-white px-3 py-1 rounded-full text-xs font-bold">{post.category}</span>

@@ -4,7 +4,7 @@ slug: "addressing-customer-service-related-pain-points"
 excerpt: "A veterinarian’s day is hectic, and you can’t waste your valuable time waiting to speak to an agent when you need technical support. You need your interaction to be quick and efficient and to provi…"
 category: "Technology"
 date: "2022-10-10"
-image: "https://www.stringsoft.com/blog/Veterinary-client-portal.jpg"
+image: "/blog/Veterinary-client-portal.jpg"
 imageDescription: "Addressing Customer Service-Related Pain Points"
 ---
 A veterinarian’s day is hectic, and you can’t waste your valuable time waiting to speak to an agent when you need technical support. You need your interaction to be quick and efficient and to provide the information you need in an understandable and concise manner. StringSoft strives to respond promptly to customers and offers several service options to ensure they receive the best solution possible in the shortest amount of time. Keep reading to learn how StringSoft addresses common customer service-related pain points to ensure you can get back to your busy day quickly.
@@ -34,5 +34,5 @@ Every person seeking customer support wants access to accurate and useful produc
 Users may be frustrated if they feel their problem isn’t properly understood and acknowledged. StringSoft’s community feature allows you to communicate with other users and with company representatives. This option allows you to ask and answer questions online to help solve issues, and is available around the clock. When a successful and popular response is submitted, the information remains available forever or until someone provides a better response. The community feature also allows you to see the progress on an issue and the status of a feature request
 
 ## Portal
-![A woman typing on a laptop with a technical support button](https://www.stringsoft.com/blog/Portal.jpg)
+![A woman typing on a laptop with a technical support button](/blog/Portal.jpg)
 Users don’t want to deal with multiple interfaces to get the help they need in the way they need it. The portal is the main entry point where users can create tickets, start live chats, read knowledge base information, interact with the community, and track progress on issues they’ve submitted. The portal consolidates technical support options in one interface to make finding answers easy and convenient. As a veterinarian, your top priority is your patients and your clients, and you don’t want a technical issue to prevent you from providing the best possible care. StringSoft provides exceptional customer service features to address many common customer service-related pain points to ensure you receive the answers you need in a convenient and timely manner. Our useful features help ensure you can spend your valuable time addressing your patient’s needs instead of waiting on hold to speak to a technical support agent. Contact **StringSoft** today to find out more about these helpful features.

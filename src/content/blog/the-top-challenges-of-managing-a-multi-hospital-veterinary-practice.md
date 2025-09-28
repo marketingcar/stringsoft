@@ -4,10 +4,10 @@ slug: "the-top-challenges-of-managing-a-multi-hospital-veterinary-practice"
 excerpt: "Managing a multi-hospital veterinary practice can be a rewarding but complex endeavor. With multiple locations, diverse teams, and varying patient needs, ensuring smooth operations and consistent c…"
 category: "Technology"
 date: "2024-12-10"
-image: "https://www.stringsoft.com/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg"
+image: "/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg"
 imageDescription: "The Top Challenges of Managing a Multi-Hospital Veterinary Practice"
 ---
-![Keep Your Processes Organized In a Process Library](https://www.stringsoft.com/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg)
+![Keep Your Processes Organized In a Process Library](/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg)
 
 Managing a multi-hospital veterinary practice can be a rewarding but complex endeavor. With multiple locations, diverse teams, and varying patient needs, ensuring smooth operations and consistent care across all hospitals is no small feat. Here are the top challenges faced by managers of multi-hospital veterinary practices and some strategies to overcome them.
 

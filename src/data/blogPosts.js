@@ -5,7 +5,7 @@ export const blogPosts = [
     excerpt: 'Discover practical tips to reduce administrative tasks and improve overall efficiency in your veterinary practice.',
     category: 'Efficiency',
     date: 'August 29, 2025',
-    image: 'https://www.stringsoft.com/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg',
+    image: '/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg',
     imageDescription: 'A calm and organized veterinary clinic reception area with modern design',
     content: [
       "In the fast-paced world of veterinary medicine, efficiency is key. Juggling appointments, managing medical records, and communicating with clients can quickly become overwhelming. A streamlined workflow not only reduces stress for your team but also enhances the quality of care you provide. At StringSoft, we've designed our platform to tackle these challenges head-on. Here are five ways StringSoft can help you streamline your clinic's workflow.",
@@ -22,7 +22,7 @@ export const blogPosts = [
     excerpt: 'Explore how artificial intelligence is transforming diagnostics, treatment planning, and practice management.',
     category: 'Technology',
     date: 'August 29, 2025',
-    image: 'https://www.stringsoft.com/blog/DICOM-benefits-for-veterinarians.jpg',
+    image: '/blog/DICOM-benefits-for-veterinarians.jpg',
     imageDescription: 'Futuristic illustration of a veterinarian using an AI interface with animal data',
     content: [
       "Artificial intelligence (AI) is no longer a concept of the distant future; it's a powerful tool that is actively reshaping the landscape of veterinary medicine. From enhancing diagnostic accuracy to streamlining administrative tasks, AI is empowering veterinarians to provide better care more efficiently. StringSoft is at the forefront of this revolution, integrating next-generation AI features directly into our practice management system.",
@@ -38,7 +38,7 @@ export const blogPosts = [
     excerpt: 'Happy clients are the cornerstone of a successful practice. Learn how to enhance communication and build lasting relationships.',
     category: 'Practice Growth',
     date: 'August 29, 2025',
-    image: 'https://www.stringsoft.com/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg',
+    image: '/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg',
     imageDescription: 'A happy pet owner interacting with a veterinarian on a tablet showing their pet\'s health data',
     content: [
       "In veterinary medicine, the patient can't tell you what's wrong. This makes clear, consistent, and compassionate communication with the pet owner absolutely critical. Building trust through effective communication not only leads to better health outcomes for the patient but also fosters client loyalty, which is the bedrock of a thriving practice. Here are three ways StringSoft's tools can help you elevate your client communication strategy.",

@@ -4,7 +4,7 @@ slug: "why-telemedicine-is-changing-veterinary-care"
 excerpt: "Pet owners expect convenience, and telemedicine is becoming an essential service for veterinary practices looking to improve accessibility. From triaging minor issues to post-op check-ins, telehealth can reduce clinic strain while enhancing client satisfaction."
 category: "Technology"
 date: "2025-03-14"
-image: "https://www.stringsoft.com/blog/Hybrid-clouds-provide-better-support-for-remote-workers-1.jpg"
+image: "/blog/Portal.jpg"
 imageDescription: "Why Telemedicine is Changing Veterinary Care"
 ---
 

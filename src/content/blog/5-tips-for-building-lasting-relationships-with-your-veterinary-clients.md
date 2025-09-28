@@ -4,7 +4,7 @@ slug: "5-tips-for-building-lasting-relationships-with-your-veterinary-clients"
 excerpt: "As you become familiar with their pets, lifestyle, and preferred veterinary care level, a long-term client can be a gift–similar to a lifelong friend. When you build a strong client relationship–gr…"
 category: "Technology"
 date: "2022-11-07"
-image: "https://www.stringsoft.com/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg"
+image: "/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg"
 imageDescription: "5 Tips for Building Lasting Relationships With Your Veterinary Clients"
 ---
 As you become familiar with their pets, lifestyle, and preferred veterinary care level, a long-term client can be a gift–similar to a lifelong friend. When you build a strong client relationship–growing in trust and respect–your practice's profitability increases, as does your opportunity to provide better patient care through accepted recommendations. To begin developing long-lasting bonds with your clients, follow our **StringSoft** team's tips.
@@ -42,6 +42,6 @@ By using a client portal, your clients can quickly and easily complete their pet
 
 #### 5. Skim Each Patient's Medical Record Before Their Veterinary Appointment
 
-![a woman in a white lab coat sitting in front of a laptop computer](https://www.stringsoft.com/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg)
+![a woman in a white lab coat sitting in front of a laptop computer](/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg)
 
 Before an appointment with a patient who has a complicated history, ensure you review their medical record. Taking the time to refresh your memory regarding a patient's diagnosis and treatments—successful and ineffective—goes a long way toward demonstrating how important your client and their pet are to you. This step is essential when you have been a pet's primary veterinarian, because, in your client's eyes, their pet is your most important patient, and they expect you to be well-versed in their beloved companion's medical history. Quickly scanning a patient's complex chart can be a real challenge when using some practice information management systems (PIMS). Therefore, upgrading your software to a more intuitive, easy-to-search program can greatly improve your efficiency and client care. Schedule a demo to learn how **StringSoft** can make a positive difference in your veterinary practice.

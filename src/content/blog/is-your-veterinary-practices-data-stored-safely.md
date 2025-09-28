@@ -4,7 +4,7 @@ slug: "is-your-veterinary-practices-data-stored-safely"
 excerpt: "Your local news channel one evening reports on a security breach in your credit card company. Worried that your sensitive information, such as your social security and credit card account numbers, …"
 category: "Technology"
 date: "2020-01-17"
-image: "https://www.stringsoft.com/blog/Data-ownership-and-security.jpg"
+image: "/blog/Data-ownership-and-security.jpg"
 imageDescription: "Is Your Veterinary Practice’s Data Stored Safely?"
 ---
 Your local news channel one evening reports on a security breach in your credit card company. Worried that your sensitive information, such as your social security and credit card account numbers, has been stolen, you quickly call the company and demand to know that your information is secure. But, they cannot make any promises, and you’re left feeling troubled about the inevitable mess after such a data leak. If you’ve ever been in this situation, you know how terrifying it is to hear about a security breach of your personal data. Compound that horror of leaked information by your number of clients, add in your personal business records, and you may suffer from a full-fledged panic attack.
@@ -28,7 +28,7 @@ At StringSoft, we do things differently than most software providers. We have sp
 - If you already have premise-based equipment, we can update your storage solution to feature a revolutionary premise-based storage option, or create a hybrid option designed specifically to meet your needs.
 
 ## Data Ownership and Security
-![a person holding a dog's paw in their hand](https://www.stringsoft.com/blog/Data-ownership-and-security.jpg)
+![a person holding a dog's paw in their hand](/blog/Data-ownership-and-security.jpg)
 
 If your data is stored at the software-provider’s location, you may not own the data—the data is generally owned by the software provider. Your data may be shared with third parties or government agencies upon request, unless your contract with the software provider explicitly states otherwise. Data also may not be accessible in these instances if you want to access the full database, making you dependent on the software provider’s API to access this data. We look at things differently at StringSoft. Your data is yours alone, and we do not share it with anyone. We have also designed several levels of security permissions to restrict user access to clearly defined program areas.
 

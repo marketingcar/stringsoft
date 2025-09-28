@@ -4,7 +4,7 @@ slug: "coming-soon"
 excerpt: "Dear Valued Community, As we chart our course for 2025, we want to share an important update regarding our participation in industry conferences. After careful consideration, StringSoft has decided…"
 category: "Technology"
 date: "2025-03-21"
-image: "https://www.stringsoft.com/blog/Portal.jpg"
+image: "/blog/Portal.jpg"
 imageDescription: "Coming Soon"
 ---
 Dear Valued Community,

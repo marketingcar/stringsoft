@@ -97,7 +97,7 @@ const blogPosts = markdownFiles.map((file) => {
     excerpt: frontmatter.excerpt || '',
     category: frontmatter.category || 'Technology',
     date: frontmatter.date || '',
-    image: frontmatter.image || 'https://images.unsplash.com/photo-1608394547454-cbc0d9510e9e',
+    image: frontmatter.image || '/images/blog-reading-illustration.png',
     imageDescription: frontmatter.imageDescription || frontmatter.title || '',
     content: body.trim(),
     filename: file.filename

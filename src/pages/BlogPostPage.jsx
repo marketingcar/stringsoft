@@ -86,7 +86,7 @@ const BlogPostPage = () => {
               <img
                 className="w-full h-full object-cover"
                 alt={post.imageDescription || post.title}
-                src={post.image || "https://images.unsplash.com/photo-1595872018818-97555653a011"} />
+                src={post.image || "/images/blog-reading-illustration.png"} />
               <div className="absolute inset-0 bg-black/30"></div>
             </motion.div>
 

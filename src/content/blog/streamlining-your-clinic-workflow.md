@@ -4,7 +4,7 @@ slug: "streamlining-your-clinic-workflow"
 excerpt: "Discover practical tips to reduce administrative tasks and improve overall efficiency in your veterinary practice."
 category: "Efficiency"
 date: "2025-08-29"
-image: "https://www.stringsoft.com/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg"
+image: "/blog/Skim-each-patients-medical-record-before-their-veterinary-appointment.jpg"
 imageDescription: "A calm and organized veterinary clinic reception area with modern design"
 ---
 

@@ -4,7 +4,7 @@ slug: "7-benefits-of-a-hybrid-cloud-for-veterinarians"
 excerpt: "A hybrid cloud incorporates public clouds, a private cloud, and on-premises resources to provide flexibility in data deployment options for busy veterinary practices. A wide area network (WAN) conn…"
 category: "Technology"
 date: "2022-10-03"
-image: "https://www.stringsoft.com/blog/Portal.jpg"
+image: "/blog/Portal.jpg"
 imageDescription: "7 Benefits of a Hybrid Cloud for Veterinarians"
 ---
 A hybrid cloud incorporates public clouds, a private cloud, and on-premises resources to provide flexibility in data deployment options for busy veterinary practices. A wide area network (WAN) connects these various technologies, and they are integrated to create an orchestrated, logical entity that channels workloads between private infrastructure and public clouds as needed. Keep reading to learn how your practice can benefit from a hybrid cloud environment.
@@ -29,7 +29,7 @@ Using a hybrid cloud allows you the flexibility to research technologies that be
 
 #### 7. Hybrid Clouds Provide Better Support for Remote Workers
 
-![alt](https://www.stringsoft.com/blog/Hybrid-clouds-provide-better-support-for-remote-workers-1.jpg)
+![alt](/blog/Hybrid-clouds-provide-better-support-for-remote-workers-1.jpg)
 
 Many veterinarians prefer to write case notes from the comfort of their home, or they may need access to a file during their day off. A hybrid cloud environment allows employees with permission to access data from anywhere at any time. This is important for attracting top talent and optimizing productivity and efficiency in your practice.
 A hybrid cloud offers the best of private and public cloud scenarios. Contact **StringSoft** today for a free demonstration to see how this feature can benefit your practice.

@@ -4,7 +4,7 @@ slug: "3-ways-veterinary-practice-management-software-improves-communication"
 excerpt: "Good communication is the foundation for every aspect of optimal veterinary care. Proper communication with your team members, clients, and referral veterinarians is crucial to ensure your pet pati…"
 category: "Technology"
 date: "2022-08-22"
-image: "https://www.stringsoft.com/blog/Customer-support-is-readily-available.jpg"
+image: "/blog/Customer-support-is-readily-available.jpg"
 imageDescription: "3 Ways Veterinary Practice Management Software Improves Communication"
 ---
 Good communication is the foundation for every aspect of optimal veterinary care. Proper communication with your team members, clients, and referral veterinarians is crucial to ensure your pet patients receive the care they need and deserve. Veterinary practice management software (PMS) enables you to easily communicate with everyone involved in a case to ensure all necessary information is available, so you can provide the best possible care for your patients. StringSoft PMS can enhance your practice’s communication in many ways.
@@ -28,7 +28,7 @@ In addition, when a client sends a message to the veterinarian, their message wi
 
 #### 3. Improving Communication Between Referring and Receiving Veterinarians
 
-![a doctor holding a tablet with a network of people on it](https://www.stringsoft.com/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg)
+![a doctor holding a tablet with a network of people on it](/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg)
 
 When a pet is referred for further diagnostics or an advanced procedure, effective communication is crucial. The receiving veterinarian must know what the case entails, and the referring veterinarian needs to understand what follow-up care is needed. The veterinary PMS referral portal facilitates easy communication between both parties. Valuable features include:
 

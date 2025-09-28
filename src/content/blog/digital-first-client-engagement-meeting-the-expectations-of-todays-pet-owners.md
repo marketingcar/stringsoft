@@ -4,7 +4,7 @@ slug: "digital-first-client-engagement-meeting-the-expectations-of-todays-pet-ow
 excerpt: "Today’s pet parents expect on-demand access to services, from mobile appointment booking to real-time messaging. Veterinary practices that embrace digital-first engagement see higher client satisfa…"
 category: "Technology"
 date: "2025-04-14"
-image: "https://www.stringsoft.com/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg"
+image: "/blog/Improving-communication-between-referring-and-receiving-veterinarians.jpg"
 imageDescription: "Digital-First Client Engagement – Meeting the Expectations of Today’s Pet Owners"
 ---
 Today’s pet parents expect on-demand access to services, from mobile appointment booking to real-time messaging. Veterinary practices that embrace digital-first engagement see higher client satisfaction, fewer no-shows, and improved efficiency.

@@ -4,7 +4,7 @@ slug: "4-ways-to-improve-work-relations-in-your-veterinary-practice"
 excerpt: "Whether you are a practice manager, owner, or team member, cultivating a positive workplace is essential to preventing conflict and avoiding a toxic environment. Many veterinary professionals cite …"
 category: "Technology"
 date: "2022-11-13"
-image: "https://www.stringsoft.com/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg"
+image: "/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg"
 imageDescription: "4 Ways to Improve Work Relations in Your Veterinary Practice"
 ---
 Whether you are a practice manager, owner, or team member, cultivating a positive workplace is essential to preventing conflict and avoiding a toxic environment. Many veterinary professionals cite bullying, workplace drama, and a toxic atmosphere as their reason for leaving a practice—or for leaving the profession altogether. Ideally, the practice manager and owner should accept responsibility for setting the example for maintaining a positive, supportive workplace, which the rest of the team then begins to emulate. However, for a happier, more fulfilling career no matter your position, you can take the initiative to create a congenial work environment. Our **StringSoft** software team recommends the following tips to help you connect with your colleagues, and create and maintain a positive workplace environment.
@@ -23,6 +23,6 @@ While mastering a new skill or reaching a goal is rewarding in and of itself, wh
 
 #### 4. Ask for Help From and Return the Favor to Your Veterinary Practice Team Colleagues
 
-![two women in scrubs are holding a dog](https://www.stringsoft.com/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg)
+![two women in scrubs are holding a dog](/blog/Ask-for-help-from-and-return-the-favor-to-your-veterinary-practice-team-colleagues.jpg)
 
 Oftentimes, a team member's feelings can be hurt, and resentment simmers after a colleague does not provide help when requested. However, team members often believe that a colleague should simply have seen that they needed assistance—no questions asked. A cohesive team develops through a desire to work together and to offer—and ask for—assistance when necessary. Include teamwork exercises during staff meetings to encourage team members who are not comfortable asking for help to practice doing so. In addition, explain to shy team members that they should request assistance as soon as they need help rather than waiting until they are struggling and feeling frustrated. When the group is together, perform a roleplay activity, and ask team members to swap roles. This practice can help everyone learn to recognize when a colleague may need assistance with a task. Common veterinary practice stressors can strain colleague interactions. Inefficient workflows, overwhelmed staff, and outdated equipment and software can create veterinary team member frustration and impatience. To lighten your team's stress load, upgrade your practice management software. Schedule a demo to learn how **StringSoft** software can make each team member's job easier, facilitate communication, and boost morale, job satisfaction, and your veterinary practice's workplace environment.

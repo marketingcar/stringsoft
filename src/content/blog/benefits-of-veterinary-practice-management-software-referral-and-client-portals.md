@@ -4,7 +4,7 @@ slug: "benefits-of-veterinary-practice-management-software-referral-and-client-p
 excerpt: "Veterinary referral partnerships are crucial for providing advanced patient care, and these relationships require that the necessary information flows easily in both directions. When a general prac…"
 category: "Technology"
 date: "2022-08-15"
-image: "https://www.stringsoft.com/blog/Veterinary-client-portal.jpg"
+image: "/blog/Veterinary-client-portal.jpg"
 imageDescription: "Benefits of Veterinary Practice Management Software Referral and Client Portals"
 ---
 Veterinary referral partnerships are crucial for providing advanced patient care, and these relationships require that the necessary information flows easily in both directions. When a general practitioner refers a pet patient to your specialty practice, an open line of communication is key to ensure the pet gets the care they need. In addition, the pet owner must be continuously informed so they are aware of their pet’s status and know how to properly care for their pet after discharge. StringSoft understands the critical need for excellent client communication, and our practice management software includes easy-to-use referral and client portals to facilitate referral management.
@@ -27,7 +27,7 @@ Veterinarians refer their patients for many reasons, and an accessible veterinar
 - **Personalizing the site** — The website belongs only to the referral practice and can reflect their practice’s image.
 
 ### Veterinary client portal
-![a woman sitting on a bed with a cat and a laptop](https://www.stringsoft.com/blog/Veterinary-client-portal.jpg)Good communication with pet owners provides better clinical outcomes, improves client satisfaction, and increases client compliance in response to veterinary recommendations. An easily accessible veterinary PMS client portal helps facilitate veterinary team-pet owner communication, to ensure the pet owner can perform the necessary tasks. Benefits for pet owners include:
+![a woman sitting on a bed with a cat and a laptop](/blog/Veterinary-client-portal.jpg)Good communication with pet owners provides better clinical outcomes, improves client satisfaction, and increases client compliance in response to veterinary recommendations. An easily accessible veterinary PMS client portal helps facilitate veterinary team-pet owner communication, to ensure the pet owner can perform the necessary tasks. Benefits for pet owners include:
 
 - **Viewing appointments** — Pet owners can log in to their account through the client portal and view their pet’s upcoming appointments.
 - **Requesting appointments** — Pet owners can request appointments through the portal, instead of making multiple phone calls or playing phone tag with a busy CSR.
