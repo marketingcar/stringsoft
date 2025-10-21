@@ -90,9 +90,8 @@ const WebinarLandingPage = () => {
                 variant="gradient"
                 size="lg"
                 onClick={handleRegisterClick}
-                className="px-8 py-4 rounded-full text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="px-8 py-4 rounded-full text-lg shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center gap-2"
               >
-                <Calendar className="w-5 h-5 mr-2" />
                 Register Now
               </Button>
             </motion.div>
@@ -198,9 +197,8 @@ const WebinarLandingPage = () => {
                 variant="gradient"
                 size="lg"
                 onClick={handleRegisterClick}
-                className="px-8 py-4 rounded-full text-lg shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="px-8 py-4 rounded-full text-lg shadow-lg hover:shadow-2xl transition-all duration-300 inline-flex items-center gap-2"
               >
-                <Calendar className="w-5 h-5 mr-2" />
                 Register for the Webinar
               </Button>
             </div>
