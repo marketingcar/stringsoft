@@ -21,6 +21,7 @@ const TermsOfServicePage = lazy(() => import('@/pages/TermsOfServicePage'));
 const CookiePolicyPage = lazy(() => import('@/pages/CookiePolicyPage'));
 const FaqPage = lazy(() => import('@/pages/FaqPage'));
 const StyleGuidePage = lazy(() => import('@/pages/StyleGuidePage'));
+const WebinarLandingPage = lazy(() => import('@/pages/WebinarLandingPage'));
 const NotFoundPage = lazy(() => import('@/pages/NotFoundPage'));
 
 // Loading component with consistent background
@@ -56,6 +57,7 @@ function App() {
             <Route path="cookie-policy" element={<CookiePolicyPage />} />
             <Route path="faq" element={<FaqPage />} />
             <Route path="styleguide" element={<StyleGuidePage />} />
+            <Route path="lp-webinar-1" element={<WebinarLandingPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
