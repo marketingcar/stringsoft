@@ -3,7 +3,7 @@
 A modern, optimized React-based website for StringSoft's veterinary practice management software, featuring comprehensive SEO, automated content management, and static site generation for optimal performance.
 
 ## 🚀 Tech Stack
-
+fxghfxgh
 ### Frontend
 - **React 18** - Modern JavaScript library for building user interfaces
 - **Vite** - Fast build tool and development server
