@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
+import 'dotenv/config';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -36,8 +37,49 @@ const ROUTES = [
   { path: '/styleguide', title: 'Style Guide - StringSoft Design System', description: 'Complete style guide and design system for StringSoft.' },
 ];
 
-// Load blog posts
-function loadBlogPosts() {
+// Fetch posts from Ghost CMS
+async function fetchGhostPosts() {
+  const GHOST_API_URL = process.env.VITE_GHOST_API_URL || 'https://stringsoft.marketingcarcontent.com';
+  const GHOST_CONTENT_API_KEY = process.env.VITE_GHOST_CONTENT_API_KEY || '120a310b63c6465ed857f3c447';
+
+  try {
+    const params = new URLSearchParams({
+      key: GHOST_CONTENT_API_KEY,
+      limit: 'all',
+      include: 'tags,authors'
+    });
+
+    const response = await fetch(
+      `${GHOST_API_URL}/ghost/api/content/posts/?${params.toString()}`
+    );
+
+    if (!response.ok) {
+      console.warn('Failed to fetch Ghost posts:', response.statusText);
+      return [];
+    }
+
+    const data = await response.json();
+
+    return (data.posts || []).map(post => ({
+      slug: post.slug,
+      title: post.title,
+      excerpt: post.excerpt || post.custom_excerpt || '',
+      category: post.primary_tag?.name || 'Technology',
+      date: post.published_at,
+      image: post.feature_image || '/images/blog-reading-illustration.png',
+      imageDescription: post.feature_image_alt || post.title,
+      content: post.html || '',
+      lastModified: post.updated_at,
+      isGhostPost: true
+    }));
+  } catch (error) {
+    console.warn('Error fetching Ghost posts:', error.message);
+    return [];
+  }
+}
+
+// Load legacy blog posts from markdown files
+function loadLegacyBlogPosts() {
   const blogDir = path.join(rootDir, 'src/content/blog');
   const posts = [];
 
@@ -59,13 +101,28 @@ function loadBlogPosts() {
         imageDescription: frontmatter.imageDescription,
         content: body,
         lastModified: fs.statSync(filePath).mtime.toISOString(),
+        isLegacyPost: true
       });
     }
   } catch (error) {
-    console.warn('Could not load blog posts:', error.message);
+    console.warn('Could not load legacy blog posts:', error.message);
   }
 
-  return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+  return posts;
+}
+
+// Load all blog posts (legacy + Ghost)
+async function loadBlogPosts() {
+  console.log('📚 Loading blog posts...');
+
+  const legacyPosts = loadLegacyBlogPosts();
+  console.log(`   - Found ${legacyPosts.length} legacy posts`);
+
+  const ghostPosts = await fetchGhostPosts();
+  console.log(`   - Found ${ghostPosts.length} Ghost posts`);
+
+  const allPosts = [...legacyPosts, ...ghostPosts];
+  return allPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
 
 // Extract asset references from Vite's built HTML
@@ -362,7 +419,7 @@ function generateHTMLFiles(routes, posts, distDir, assetRefs) {
 async function generateStaticSite() {
   console.log('🚀 Starting static site generation...');
 
-  const posts = loadBlogPosts();
+  const posts = await loadBlogPosts();
   const distDir = path.join(rootDir, 'dist');
 
   // Dist directory should already exist from Vite build

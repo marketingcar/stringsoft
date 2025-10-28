@@ -5,13 +5,22 @@
     <link>https://stringsoft.com/blog</link>
     <description>Revolutionary veterinary practice management software designed for modern animal care professionals.</description>
     <language>en</language>
-    <lastBuildDate>Sun, 28 Sep 2025 23:29:22 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 28 Oct 2025 18:14:02 GMT</lastBuildDate>
     <atom:link href="https://stringsoft.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://stringsoft.com/og-image.jpg</url>
       <title>StringSoft Blog</title>
       <link>https://stringsoft.com/blog</link>
     </image>
+    <item>
+      <title><![CDATA[Coming soon]]></title>
+      <link>https://stringsoft.com/blog/coming-soon</link>
+      <guid isPermaLink="true">https://stringsoft.com/blog/coming-soon</guid>
+      <description><![CDATA[This is StringSoft, a brand new site by Nicole Hall that's just getting started. Things will be up and running here shortly, but you can subscribe in the meantime if you'd like to stay up to date and receive emails when new content is published!]]></description>
+      <pubDate>Mon, 06 Oct 2025 18:19:25 GMT</pubDate>
+      <category><![CDATA[News]]></category>
+      <enclosure url="https://static.ghost.org/v4.0.0/images/feature-image.jpg" type="image/jpeg"/>
+    </item>
     <item>
       <title><![CDATA[The Future is Now: How AI is Revolutionizing Veterinary Medicine]]></title>
       <link>https://stringsoft.com/blog/ai-in-veterinary-medicine</link>
@@ -182,15 +191,6 @@
       <pubDate>Mon, 26 Sep 2022 00:00:00 GMT</pubDate>
       <category><![CDATA[Technology]]></category>
       <enclosure url="/blog/Keep-Your-Processes-Organized-In-a-Process-Library-300x134.jpg" type="image/jpeg"/>
-    </item>
-    <item>
-      <title><![CDATA[3 Ways Veterinary Practice Management Software Improves Communication]]></title>
-      <link>https://stringsoft.com/blog/3-ways-veterinary-practice-management-software-improves-communication</link>
-      <guid isPermaLink="true">https://stringsoft.com/blog/3-ways-veterinary-practice-management-software-improves-communication</guid>
-      <description><![CDATA[Good communication is the foundation for every aspect of optimal veterinary care. Proper communication with your team members, clients, and referral veterinarians is crucial to ensure your pet pati…]]></description>
-      <pubDate>Mon, 22 Aug 2022 00:00:00 GMT</pubDate>
-      <category><![CDATA[Technology]]></category>
-      <enclosure url="/blog/Customer-support-is-readily-available.jpg" type="image/jpeg"/>
     </item>
   </channel>
 </rss>

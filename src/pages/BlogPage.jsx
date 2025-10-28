@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -6,11 +6,27 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { getBlogPosts } from '@/utils/blogLoader';
 
 const BlogPage = () => {
-  const allBlogPosts = getBlogPosts();
+  const [allBlogPosts, setAllBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const postsPerPage = 9;
-  const totalPages = Math.ceil(allBlogPosts.length / postsPerPage);
 
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const posts = await getBlogPosts();
+        setAllBlogPosts(posts);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, []);
+
+  const totalPages = Math.ceil(allBlogPosts.length / postsPerPage);
   const startIndex = (currentPage - 1) * postsPerPage;
   const endIndex = startIndex + postsPerPage;
   const blogPosts = allBlogPosts.slice(startIndex, endIndex);
@@ -19,6 +35,22 @@ const BlogPage = () => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  if (loading) {
+    return (
+      <>
+        <Helmet>
+          <title>Veterinary Practice Management Blog | StringSoft</title>
+          <meta name="description" content="Insights, case studies, and practical tips for improving clinic efficiency and practice growth. Stay ahead with the StringSoft blog for veterinarians." />
+        </Helmet>
+        <div className="pt-32 pb-20 text-white">
+          <div className="container mx-auto px-6 text-center">
+            <p className="text-white/60">Loading blog posts...</p>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

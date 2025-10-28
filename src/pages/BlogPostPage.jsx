@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useParams, Link, Navigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -38,9 +38,41 @@ const formatMarkdownContent = (content) => {
 
 const BlogPostPage = () => {
   const { slug } = useParams();
-  const post = getBlogPost(slug);
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!post) {
+  useEffect(() => {
+    const loadPost = async () => {
+      try {
+        const fetchedPost = await getBlogPost(slug);
+        if (fetchedPost) {
+          setPost(fetchedPost);
+        } else {
+          setNotFound(true);
+        }
+      } catch (error) {
+        console.error('Error loading blog post:', error);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPost();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="pt-32 pb-20 bg-charcoal-black text-white">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-white/60">Loading post...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (notFound || !post) {
     return <Navigate to="/404" replace />;
   }
 
@@ -96,7 +128,9 @@ const BlogPostPage = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="prose prose-invert prose-lg max-w-none mx-auto"
             >
-              <div dangerouslySetInnerHTML={{ __html: formatMarkdownContent(post.content) }} />
+              <div dangerouslySetInnerHTML={{
+                __html: post.isGhostPost ? post.content : formatMarkdownContent(post.content)
+              }} />
             </motion.div>
           </article>
         </div>

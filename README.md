@@ -19,7 +19,7 @@ fxghfxgh
 - **Font Optimization** - Preloaded Google Fonts with fallbacks for optimal performance
 
 ### Content Management
-- **Decap CMS** - Git-based headless CMS for content management
+- **Ghost CMS** - Headless CMS for content management
 - **Gray Matter** - Front matter parser for markdown files
 - **Markdown** - Content format for blog posts
 
@@ -44,9 +44,6 @@ stringsoft/
 │   └── workflows/
 │       └── deploy.yml              # GitHub Actions deployment workflow
 ├── public/
-│   ├── admin/
-│   │   ├── index.html             # Decap CMS admin interface
-│   │   └── config.yml             # Decap CMS configuration
 │   ├── favicon.ico
 │   └── assets/                    # Static assets (images, icons)
 ├── src/
@@ -89,20 +86,14 @@ stringsoft/
 git clone https://github.com/marketingcar/stringsoft.git
 cd stringsoft
 
-# Install dependencies (use legacy-peer-deps for Decap CMS compatibility)
-npm install --legacy-peer-deps
+# Install dependencies
+npm install
 
 # Start development server
 npm run dev
 ```
 
 The development server will start at `http://localhost:3000`
-
-### Content Management
-Access the Decap CMS admin interface at `http://localhost:3000/admin` to:
-- Create and edit blog posts
-- Manage site content
-- Preview changes before publishing
 
 ## 🚀 Build & Deployment
 
@@ -164,7 +155,7 @@ GitHub Actions automatically deploys the site when changes are pushed to the mai
 
 1. **Checkout** - Downloads the repository
 2. **Setup Node.js** - Installs Node.js 18
-3. **Install Dependencies** - Runs `npm ci --legacy-peer-deps`
+3. **Install Dependencies** - Runs `npm ci`
 4. **Build** - Executes `npm run build`
 5. **Deploy** - Uploads built files to FTP server
 
@@ -194,8 +185,7 @@ Your blog post content goes here...
 ```
 
 ### Adding New Content
-1. **Via Decap CMS** (Recommended): Visit `/admin` and use the visual editor
-2. **Manual**: Create new `.md` files in `src/content/blog/` following the format above
+Create new `.md` files in `src/content/blog/` following the format above
 
 ## 🖼️ Image Optimization
 
@@ -270,10 +260,8 @@ const SITE_CONFIG = {
 - Proper alt text and dimensions for accessibility
 
 ### Content Management System
-- Git-based workflow with Decap CMS
+- Ghost CMS for headless content management
 - Markdown-based content with front matter
-- Visual editing interface
-- Preview functionality
 - 23 blog posts with pagination (9 per page)
 
 ### Performance Optimization
@@ -305,3 +293,4 @@ Built with ❤️ for the veterinary community by StringSoft
 
 
 Update today
+adasdasd

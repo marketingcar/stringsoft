@@ -1,8 +1,7 @@
-// Blog loader that dynamically imports all markdown files
-// Since we can't use import.meta.glob with ?raw in this context,
-// we'll manually import each markdown file and process them
+// Blog loader that combines legacy markdown files with Ghost CMS posts
+import { fetchGhostPosts, fetchGhostPostBySlug } from './ghostClient';
 
-// Import all markdown files as modules
+// Import all legacy markdown files as modules
 import comingSoon from '/src/content/blog/coming-soon.md?raw';
 import addressingCustomerService from '/src/content/blog/addressing-customer-service-related-pain-points.md?raw';
 import benefitsReferralPortals from '/src/content/blog/benefits-of-veterinary-practice-management-software-referral-and-client-portals.md?raw';
@@ -60,7 +59,7 @@ function parseFrontmatter(content) {
   return { frontmatter, content: bodyContent };
 }
 
-// Create blog posts array from imported markdown files
+// Create legacy blog posts array from imported markdown files
 const markdownFiles = [
   { content: comingSoon, filename: 'coming-soon' },
   { content: addressingCustomerService, filename: 'addressing-customer-service-related-pain-points' },
@@ -87,8 +86,8 @@ const markdownFiles = [
   { content: streamliningWorkflow, filename: 'streamlining-your-clinic-workflow' }
 ];
 
-// Process all blog posts
-const blogPosts = markdownFiles.map((file) => {
+// Process legacy blog posts
+const legacyBlogPosts = markdownFiles.map((file) => {
   const { frontmatter, content: body } = parseFrontmatter(file.content);
 
   return {
@@ -100,22 +99,60 @@ const blogPosts = markdownFiles.map((file) => {
     image: frontmatter.image || '/images/blog-reading-illustration.png',
     imageDescription: frontmatter.imageDescription || frontmatter.title || '',
     content: body.trim(),
-    filename: file.filename
+    filename: file.filename,
+    isLegacyPost: true // Flag to identify legacy posts
   };
-}).sort((a, b) => {
-  // Sort by date, newest first
-  const dateA = new Date(a.date);
-  const dateB = new Date(b.date);
-  return dateB - dateA;
 });
 
-export const getBlogPost = (slug) => {
-  return blogPosts.find(post => post.slug === slug);
-};
+// Cache for Ghost posts to avoid repeated API calls
+let ghostPostsCache = null;
+let ghostPostsCacheTime = 0;
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
-export const getBlogPosts = () => {
-  return blogPosts;
-};
+/**
+ * Get all blog posts (legacy + Ghost)
+ * @returns {Promise<Array>} Combined array of blog posts sorted by date
+ */
+export async function getBlogPosts() {
+  // Fetch Ghost posts with caching
+  let ghostPosts = [];
+  const now = Date.now();
 
-// Export for debugging
-export { blogPosts };
+  if (ghostPostsCache && (now - ghostPostsCacheTime) < CACHE_DURATION) {
+    ghostPosts = ghostPostsCache;
+  } else {
+    ghostPosts = await fetchGhostPosts();
+    ghostPostsCache = ghostPosts;
+    ghostPostsCacheTime = now;
+  }
+
+  // Combine legacy and Ghost posts
+  const allPosts = [...legacyBlogPosts, ...ghostPosts];
+
+  // Sort by date, newest first
+  return allPosts.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateB - dateA;
+  });
+}
+
+/**
+ * Get a single blog post by slug
+ * @param {string} slug - Post slug
+ * @returns {Promise<Object|null>} Blog post or null if not found
+ */
+export async function getBlogPost(slug) {
+  // First check legacy posts
+  const legacyPost = legacyBlogPosts.find(post => post.slug === slug);
+  if (legacyPost) {
+    return legacyPost;
+  }
+
+  // If not found in legacy, try Ghost
+  const ghostPost = await fetchGhostPostBySlug(slug);
+  return ghostPost;
+}
+
+// Export legacy posts for backward compatibility
+export { legacyBlogPosts as blogPosts };

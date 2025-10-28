@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { getBlogPosts } from '@/utils/blogLoader';
 
 const Blog = () => {
-  const blogPosts = getBlogPosts();
+  const [blogPosts, setBlogPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const posts = await getBlogPosts();
+        setBlogPosts(posts);
+      } catch (error) {
+        console.error('Error loading blog posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadPosts();
+  }, []);
+
   const featuredPosts = blogPosts.slice(0, 3);
+
+  if (loading) {
+    return (
+      <section className="py-20 bg-charcoal-black">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-white/60">Loading blog posts...</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-20 bg-charcoal-black">
