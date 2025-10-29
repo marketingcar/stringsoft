@@ -1,6 +1,32 @@
-# StringSoft.com Redirects - Generated automatically
+# StringSoft.com Configuration - Generated automatically
 RewriteEngine On
 
+# Cache Control Headers
+<IfModule mod_headers.c>
+  # HTML files - Always check for updates (no cache)
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires 0
+  </FilesMatch>
+
+  # JavaScript and CSS with hashes - Cache for 1 year (immutable)
+  <FilesMatch "\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Images - Cache for 1 week
+  <FilesMatch "\.(jpg|jpeg|png|gif|svg|webp|ico)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+
+  # Fonts - Cache for 1 year
+  <FilesMatch "\.(woff|woff2|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+</IfModule>
+
+# URL Redirects
 RewriteRule ^the-benefits-of-applying-stable-workflows-and-processes-to-your-veterinary-practice/?$ /blog/the-benefits-of-applying-stable-workflows-and-processes-to-your-veterinary-practice [R=301,L]
 RewriteRule ^the-top-challenges-of-managing-a-multi-hospital-veterinary-practice/?$ /blog/the-top-challenges-of-managing-a-multi-hospital-veterinary-practice [R=301,L]
 RewriteRule ^unlocking-the-benefits-of-completely-custom-veterinary-practice-management-software/?$ /blog/unlocking-the-benefits-of-completely-custom-veterinary-practice-management-software [R=301,L]

@@ -338,9 +338,37 @@ function generateRedirects() {
   ];
 
   // Generate .htaccess file
-  let htaccess = `# StringSoft.com Redirects - Generated automatically\n`;
+  let htaccess = `# StringSoft.com Configuration - Generated automatically\n`;
   htaccess += `RewriteEngine On\n\n`;
 
+  // Cache Control Headers - Ensure fresh content on deploy
+  htaccess += `# Cache Control Headers\n`;
+  htaccess += `<IfModule mod_headers.c>\n`;
+  htaccess += `  # HTML files - Always check for updates (no cache)\n`;
+  htaccess += `  <FilesMatch "\\.(html|htm)$">\n`;
+  htaccess += `    Header set Cache-Control "no-cache, no-store, must-revalidate"\n`;
+  htaccess += `    Header set Pragma "no-cache"\n`;
+  htaccess += `    Header set Expires 0\n`;
+  htaccess += `  </FilesMatch>\n\n`;
+
+  htaccess += `  # JavaScript and CSS with hashes - Cache for 1 year (immutable)\n`;
+  htaccess += `  <FilesMatch "\\.(js|css)$">\n`;
+  htaccess += `    Header set Cache-Control "public, max-age=31536000, immutable"\n`;
+  htaccess += `  </FilesMatch>\n\n`;
+
+  htaccess += `  # Images - Cache for 1 week\n`;
+  htaccess += `  <FilesMatch "\\.(jpg|jpeg|png|gif|svg|webp|ico)$">\n`;
+  htaccess += `    Header set Cache-Control "public, max-age=604800"\n`;
+  htaccess += `  </FilesMatch>\n\n`;
+
+  htaccess += `  # Fonts - Cache for 1 year\n`;
+  htaccess += `  <FilesMatch "\\.(woff|woff2|ttf|eot)$">\n`;
+  htaccess += `    Header set Cache-Control "public, max-age=31536000"\n`;
+  htaccess += `  </FilesMatch>\n`;
+  htaccess += `</IfModule>\n\n`;
+
+  // Add redirects
+  htaccess += `# URL Redirects\n`;
   redirects.forEach(redirect => {
     const fromPath = redirect.from.replace(/^\/|\/$/g, '');
     const toPath = redirect.to;
