@@ -6,9 +6,7 @@ import { Button } from '@/components/ui/button';
 
 const WebinarLandingPage = () => {
   const handleRegisterClick = () => {
-    // Placeholder for Zoom webinar registration
-    // Replace with actual Zoom webinar registration URL
-    window.open('https://zoom.us/webinar/register/YOUR_WEBINAR_ID', '_blank');
+    window.open('https://zoom.us/webinar/register/WN_xGy0uZVEQfudbZWZFF_zUQ', '_blank');
   };
 
   return (
@@ -71,11 +69,27 @@ const WebinarLandingPage = () => {
               Tech That Works for You, Not the Other Way Around
             </motion.h2>
 
+            <motion.div
+              className="flex flex-wrap justify-center gap-6 mb-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+            >
+              <div className="flex items-center gap-2 text-white/90">
+                <Calendar className="w-5 h-5 text-brand-teal" />
+                <span className="text-lg font-medium">December 9, 2025</span>
+              </div>
+              <div className="flex items-center gap-2 text-white/90">
+                <Clock className="w-5 h-5 text-brand-teal" />
+                <span className="text-lg font-medium">1:00 PM EST</span>
+              </div>
+            </motion.div>
+
             <motion.p
               className="text-xl text-white/80 mb-8 leading-relaxed"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
+              transition={{ delay: 0.7, duration: 0.6 }}
             >
               Veterinary medicine isn't slowing down, but your technology should help you keep up — not hold you hostage with endless clicks and late-night notes. In this session, we'll unpack the tools, automations, and workflows helping modern clinics cut admin time, improve client communication, and finally get home before dinner gets cold.
             </motion.p>
@@ -83,7 +97,7 @@ const WebinarLandingPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.6 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
               className="mb-12"
             >
               <Button
@@ -102,7 +116,7 @@ const WebinarLandingPage = () => {
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-white/10 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.6 }}
+            transition={{ delay: 0.9, duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-brand-teal">What You'll Hear</h3>
             <p className="text-white/80 text-lg leading-relaxed">
@@ -115,7 +129,7 @@ const WebinarLandingPage = () => {
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-white/10 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.6 }}
+            transition={{ delay: 1.0, duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-brand-teal flex items-center">
               <Users className="w-6 h-6 mr-3" />
@@ -142,7 +156,7 @@ const WebinarLandingPage = () => {
             className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 mb-12 border border-white/10 max-w-4xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.0, duration: 0.6 }}
+            transition={{ delay: 1.1, duration: 0.6 }}
           >
             <h3 className="text-2xl font-bold mb-6 text-brand-teal flex items-center">
               <TrendingUp className="w-6 h-6 mr-3" />
@@ -185,10 +199,10 @@ const WebinarLandingPage = () => {
             className="text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
+            transition={{ delay: 1.3, duration: 0.6 }}
           >
             <div className="bg-gradient-to-r from-brand-teal/10 via-deep-purple/10 to-light-orange/10 rounded-2xl p-8 max-w-4xl mx-auto border border-white/10">
-              <Clock className="w-12 h-12 text-brand-teal mx-auto mb-4" />
+              <Calendar className="w-12 h-12 text-brand-teal mx-auto mb-4" />
               <h3 className="text-2xl font-bold mb-4">Don't Miss Out</h3>
               <p className="text-white/80 mb-6 text-lg">
                 Reserve your spot today and discover how to reclaim your time and streamline your practice.
